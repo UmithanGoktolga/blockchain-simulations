@@ -1,6 +1,6 @@
 # [PATHS]
 export HOMEFOLDER=$HOME
-export MAINFOLDER="$HOMEFOLDER/software/blockchain-simulations"
+export MAINFOLDER="$HOMEFOLDER/thesis/blockchain-simulations"
 export DOCKERFOLDER="$MAINFOLDER/argos-blockchain"
 export ARGOSFOLDER="$MAINFOLDER/argos-python"
 export EXPERIMENTFOLDER="$MAINFOLDER/FloorEstimation"
@@ -31,7 +31,7 @@ export REALTIME=true
 export LENGTH=5000
 export FLOORFILE=38.png
 export NUM1=24
-export NUMBYZANTINE=0
+export NUMBYZANTINE=6
 export BYZANTINESWARMSTYLE=1
 export CON1="${EXPERIMENTFOLDER}/controllers/main.py"
 export MYLOOP="loop_function_convergence.py"
@@ -56,5 +56,5 @@ export BLOCKPERIOD=15
 export SEED=1500
 export TIMELIMIT=100
 export SLEEPTIME=5
-export REPS=20
+export REPS=3
 export NOTES="Experiment 1 in the Science Robotics paper (24 robots with an increasing number of Byzantines)"

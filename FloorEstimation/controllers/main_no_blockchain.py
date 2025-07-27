@@ -20,7 +20,7 @@ from console import *
 from aux import *
 from statemachine import *
 
-from loop_params import params as lp
+from loop_functions.loop_params import params as lp
 from control_params import params as cp
 
 # /* Logging Levels for Console and File */
@@ -58,7 +58,8 @@ totalBlack = 0
 
 class Transaction(object):
 
-    def __init__(self, txHash, name = "", query_latency = 2):
+    def __init__(self, txHash, robot, name = "", query_latency = 2):
+        self.robot = robot
         self.name      = name
         self.hash      = txHash
         self.tx        = None
@@ -85,7 +86,7 @@ class Transaction(object):
             self.block = w3.eth.blockNumber()
 
         if not self.tx:
-            robot.log.warning('Fail: Not found')
+            self.robot.log.warning('Fail: Not found')
             self.fail = True
             return False
 
@@ -93,7 +94,7 @@ class Transaction(object):
             return False
 
         elif not self.receipt['status']:
-            robot.log.warning('Fail: Status 0')
+            self.robot.log.warning('Fail: Status 0')
             self.fail = True
             return False
 
@@ -102,7 +103,7 @@ class Transaction(object):
 
             if self.last < confirmations:
                 self.last = confirmations
-                robot.log.info('Confirming: %s/%s', confirmations, min_confirmations)
+                self.robot.log.info('Confirming: %s/%s', confirmations, min_confirmations)
                 
             if confirmations >= min_confirmations:
                 self.last = 0
@@ -128,228 +129,220 @@ class Transaction(object):
 #### INIT STEP #####################################################################################################################################################################
 ####################################################################################################################################################################################
 
-def init():
-    global clocks,counters, logs, submodules, me, rw, nav, gps, w3, rs, erb, tcp_calls, rgb
-    robotID = str(int(robot.variables.get_id()[2:])+1)
-    robotIP = identifiersExtract(robotID, 'IP')
-    robot.variables.set_attribute("id", str(robotID))
+class Controller:
+    def __init__(self, robot):
+        self.robot = robot
 
-    # /* Initialize Console Logging*/
-    #######################################################################
-    log_folder = experimentFolder + '/logs/' + robotID + '/'
+    def init(self):
+        global clocks,counters, logs, submodules, me, rw, nav, gps, w3, rs, erb, tcp_calls, rgb
+        robotID = str(int(self.robot.variables.get_id()[2:])+1)
+        robotIP = identifiersExtract(robotID, 'IP')
+        self.robot.variables.set_attribute("id", str(robotID))
 
-    # Monitor logs (recorded to file)
-    name =  'monitor.log'
-    os.makedirs(os.path.dirname(log_folder+name), exist_ok=True) 
-    logging.basicConfig(filename=log_folder+name, filemode='w+', format='[{} %(levelname)s %(name)s %(relativeCreated)d] %(message)s'.format(robotID))
-    robot.log = logging.getLogger('main')
-    robot.log.setLevel(loglevel)
+        # /* Initialize Console Logging*/
+        #######################################################################
+        log_folder = experimentFolder + '/logs/' + robotID + '/'
 
-    # /* Initialize submodules */
-    #######################################################################
-    # # /* Init web3.py */
-    robot.log.info('Initialising Python Geth Console...')
-    w3 = init_web3(robotIP)
+        # Monitor logs (recorded to file)
+        name =  'monitor.log'
+        os.makedirs(os.path.dirname(log_folder+name), exist_ok=True) 
+        logging.basicConfig(filename=log_folder+name, filemode='w+', format='[{} %(levelname)s %(name)s %(relativeCreated)d] %(message)s'.format(robotID))
+        self.robot.log = logging.getLogger('main')
+        self.robot.log.setLevel(loglevel)
 
-    # /* Init an instance of peer for this Pi-Puck */
-    me = Peer(robotID, robotIP, w3.enode, w3.key)
+        # /* Initialize submodules */
+        #######################################################################
+        # # /* Init web3.py */
+        self.robot.log.info('Initialising Python Geth Console...')
+        w3 = init_web3(robotIP)
 
-    # /* Init E-RANDB __listening process and transmit function
-    robot.log.info('Initialising RandB board...')
-    erb = ERANDB(robot, cp['erbDist'] , cp['erbtFreq'])
+        # /* Init an instance of peer for this Pi-Puck */
+        me = Peer(robotID, robotIP, w3.enode, w3.key)
 
-    #/* Init Resource-Sensors */
-    robot.log.info('Initialising resource sensor...')
-    rs = GroundSensor(robot)
-    
-    #/* Init SC resource TCP query */
-    robot.log.info('Initialising TCP resources...')
-    tcp_calls = TCP_mp('block', me.ip, 9899)
+        # /* Init E-RANDB __listening process and transmit function
+        self.robot.log.info('Initialising RandB board...')
+        erb = ERANDB(self.robot, cp['erbDist'] , cp['erbtFreq'])
 
-    # /* Init Random-Walk, __walking process */
-    robot.log.info('Initialising random-walk...')
-    rw = RandomWalk(robot, rwSpeed)
+        #/* Init Resource-Sensors */
+        self.robot.log.info('Initialising resource sensor...')
+        rs = GroundSensor(self.robot)
+        
+        #/* Init SC resource TCP query */
+        self.robot.log.info('Initialising TCP resources...')
+        tcp_calls = TCP_mp('block', me.ip, 9899)
 
-    # /* Init Navigation, __navigate process */
-    robot.log.info('Initialising navigation...')
-    nav = Navigate(robot, cp['recruit_speed'])
+        # /* Init Random-Walk, __walking process */
+        self.robot.log.info('Initialising random-walk...')
+        rw = RandomWalk(self.robot, rwSpeed)
 
-    # /* Init GPS sensor */
-    robot.log.info('Initialising gps...')
-    gps = GPS(robot)
+        # /* Init Navigation, __navigate process */
+        self.robot.log.info('Initialising navigation...')
+        nav = Navigate(self.robot, cp['recruit_speed'])
 
-    # /* Init LEDs */
-    rgb = RGBLEDs(robot)
+        # /* Init GPS sensor */
+        self.robot.log.info('Initialising gps...')
+        gps = GPS(self.robot)
 
-    # List of submodules --> iterate .start() to start all
-    submodules = [w3.geth.miner, erb]
+        # /* Init LEDs */
+        rgb = RGBLEDs(self.robot)
 
-    # /* Initialize logmodules*/
-    #######################################################################
-    # Experiment data logs (recorded to file)
+        # List of submodules --> iterate .start() to start all
+        submodules = [w3.geth.miner, erb]
 
-    txs['vote'] = Transaction(None)
+        # /* Initialize logmodules*/
+        #######################################################################
+        # Experiment data logs (recorded to file)
 
-#########################################################################################################################
-#### CONTROL STEP #######################################################################################################
-#########################################################################################################################
-global pos
-pos = [0,0]
-def controlstep():
-    global pos, clocks, counters, startFlag, startTime
-    global estimate, totalWhite, totalBlack
-    
-    if not startFlag:
-        ##########################
-        #### FIRST STEP ##########
-        ##########################
+        txs['vote'] = Transaction(None, self.robot)
 
-        startFlag = True 
-        startTime = time.time()
+    def controlstep(self):
+        global pos, clocks, counters, startFlag, startTime
+        global estimate, totalWhite, totalBlack
+        
+        if not startFlag:
+            ##########################
+            #### FIRST STEP ##########
+            ##########################
 
-        robot.log.info('--//-- Starting Experiment --//--')
+            startFlag = True 
+            startTime = time.time()
 
-        for module in submodules:
-            try:
-                module.start()
-            except:
-                robot.log.critical('Error Starting Module: %s', module)
-                sys.exit()
+            self.robot.log.info('--//-- Starting Experiment --//--')
 
-        for log in logs.values():
-            log.start()
-
-        for clock in clocks.values():
-            clock.reset()
-
-        # Startup transactions
-
-        totalWhite = totalBlack = 0        
-
-    else:
-
-        ###########################
-        ######## ROUTINES ########
-        ###########################
-
-        # Send current estimate (but only if the previous one was valid)
-        def vote(ether):
-
-            if txs['vote'].query():
-                txs['vote'] = Transaction(None)
-
-            elif txs['vote'].fail:
-                txs['vote'] = Transaction(None)
-
-            # Everything fine, ready to vote!
-            elif txs['vote'].hash == None:
-
-                mean = tcp_calls.request(data = 'mean')
-                print("Voting with ", estimate)
-                print("Mean is ", mean / 1e5)                
-                print("voteCount is ", voteCount)
-                print("voteOkCount", voteOkCount)                
+            for module in submodules:
                 try:
-                    txHash = w3.sc.functions.sendVote(int(estimate*1e7)).transact({'value':ether})
-                    txs['vote'] = Transaction(txHash)
-                except Exception as e:
-                    print('Failed to vote: (Unexpected)', e)
-                    
+                    module.start()
+                except:
+                    self.robot.log.critical('Error Starting Module: %s', module)
+                    sys.exit()
 
-        def send_to_docker():
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                s.connect((me.ip, 9898))
-                s.sendall("hi from robot %s" % me.id)
-                data = s.recv(1024)
-                print(data)
+            for log in logs.values():
+                log.start()
 
-        def peering():
-            global geth_peer_count
-            geth_peer_count = 0
-            if clocks['peering'].query(): 
+            for clock in clocks.values():
+                clock.reset()
 
-                peer_IPs = dict()
-                peer_IDs = erb.getNew()
-                for peer_ID in peer_IDs:
-                    peer_IPs[peer_ID] = identifiersExtract(peer_ID, 'IP_DOCKER')
+            # Startup transactions
 
+            totalWhite = totalBlack = 0        
+
+        else:
+
+            ###########################
+            ######## ROUTINES ########
+            ###########################
+
+            # Send current estimate (but only if the previous one was valid)
+            def vote(ether):
+
+                if txs['vote'].query():
+                    txs['vote'] = Transaction(None)
+
+                elif txs['vote'].fail:
+                    txs['vote'] = Transaction(None)
+
+                # Everything fine, ready to vote!
+                elif txs['vote'].hash == None:
+
+                    mean = tcp_calls.request(data = 'mean')
+                    print("Voting with ", estimate)
+                    print("Mean is ", mean / 1e5)                
+                    try:
+                        txHash = w3.sc.functions.sendVote(int(estimate*1e7)).transact({'value':ether})
+                        txs['vote'] = Transaction(txHash)
+                    except Exception as e:
+                        print('Failed to vote: (Unexpected)', e)
+                        
+
+            def send_to_docker():
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     s.connect((me.ip, 9898))
-                    s.sendall(str(peer_IPs).encode())
+                    s.sendall("hi from robot %s" % me.id)
                     data = s.recv(1024)
-                    geth_peer_count = int(data)
+                    print(data)
 
-                 # Turn on LEDs according to geth Peers
-                if geth_peer_count == 0: 
-                    rgb.setLED(rgb.all, 3* ['black'])
-                elif geth_peer_count == 1:
-                    rgb.setLED(rgb.all, ['red', 'black', 'black'])
-                elif geth_peer_count == 2:
-                    rgb.setLED(rgb.all, ['red', 'black', 'red'])
-                elif geth_peer_count > 2:
-                    rgb.setLED(rgb.all, 3*['red'])
+            def peering():
+                global geth_peer_count
+                geth_peer_count = 0
+                if clocks['peering'].query(): 
+
+                    peer_IPs = dict()
+                    peer_IDs = erb.getNew()
+                    for peer_ID in peer_IDs:
+                        peer_IPs[peer_ID] = identifiersExtract(peer_ID, 'IP_DOCKER')
+
+                    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                        s.connect((me.ip, 9898))
+                        s.sendall(str(peer_IPs).encode())
+                        data = s.recv(1024)
+                        geth_peer_count = int(data)
+
+                     # Turn on LEDs according to geth Peers
+                    if geth_peer_count == 0: 
+                        rgb.setLED(rgb.all, 3* ['black'])
+                    elif geth_peer_count == 1:
+                        rgb.setLED(rgb.all, ['red', 'black', 'black'])
+                    elif geth_peer_count == 2:
+                        rgb.setLED(rgb.all, ['red', 'black', 'red'])
+                    elif geth_peer_count > 2:
+                        rgb.setLED(rgb.all, 3*['red'])
 
 
 
-        ##############################
-        ##### STATE-MACHINE STEP #####
-        ##############################
+            ##############################
+            ##### STATE-MACHINE STEP #####
+            ##############################
 
-        #########################################################################################################
-        #### State::EVERY
-        #########################################################################################################
-        
-        # Perform submodules step
-        for module in [erb, rs, rw]:
-            module.step()
+            #########################################################################################################
+            #### State::EVERY
+            #########################################################################################################
+            
+            # Perform submodules step
+            for module in [erb, rs, rw]:
+                module.step()
 
-        # Get Byzantine style and perform according acction
-        byzantine_style = robot.variables.get_attribute("byzantine_style")
+            # Get Byzantine style and perform according acction
+            byzantine_style = self.robot.variables.get_attribute("byzantine_style")
 
-        if byzantine_style == 1:
-            estimate = 0
-        elif byzantine_style == 2:
-            estimate = 1        
-        elif byzantine_style == 3:
-            # 50% chance white, 50% change black
-            p = random.uniform(0, 1)
-            if p < 0.5:
+            if byzantine_style == 1:
                 estimate = 0
-            else:
-                estimate = 1
-        elif byzantine_style == 4:
-            estimate = random.uniform(0, 1)        
-        
-        # Non-Byzantine robots
-        else:
-            #if clocks['sensing'].query(): 
-            newValues = rs.getNew()
-
-            #print([newValue for newValue in newValues])
-    
-            for value in newValues:
-                if value != 0:
-                    totalWhite += 1
+            elif byzantine_style == 2:
+                estimate = 1        
+            elif byzantine_style == 3:
+                # 50% chance white, 50% change black
+                p = random.uniform(0, 1)
+                if p < 0.5:
+                    estimate = 0
                 else:
-                    totalBlack += 1
-            estimate = (0.5+totalWhite)/(totalWhite+totalBlack+1)
+                    estimate = 1
+            elif byzantine_style == 4:
+                estimate = random.uniform(0, 1)        
+            
+            # Non-Byzantine robots
+            else:
+                #if clocks['sensing'].query(): 
+                newValues = rs.getNew()
 
-        if clocks['estimate'].query():
-            print("Estimate is", estimate)
-            print("totalWhite", totalWhite)
-            print("totalBlack", totalBlack)
+                #print([newValue for newValue in newValues])
         
+                for value in newValues:
+                    if value != 0:
+                        totalWhite += 1
+                    else:
+                        totalBlack += 1
+                estimate = (0.5+totalWhite)/(totalWhite+totalBlack+1)
 
-#########################################################################################################################
-#### RESET-DESTROY STEPS ################################################################################################
-#########################################################################################################################
+            if clocks['estimate'].query():
+                print("Estimate is", estimate)
+                print("totalWhite", totalWhite)
+                print("totalBlack", totalBlack)
+            
 
-def reset():
-    pass
+    def reset(self):
+        pass
 
-def destroy():
-
-    print('Killed robot '+ me.id)
+    def destroy(self):
+        print('Killed robot '+ me.id)
 
 #########################################################################################################################
 #########################################################################################################################
@@ -372,3 +365,6 @@ def getIds(__enodes = None):
         return [enode.split('@',2)[1].split(':',2)[0].split('.')[-1] for enode in __enodes]
     else:
         return [enode.split('@',2)[1].split(':',2)[0].split('.')[-1] for enode in getEnodes()]
+
+# Create the instance that ARGoS will use
+controller = Controller

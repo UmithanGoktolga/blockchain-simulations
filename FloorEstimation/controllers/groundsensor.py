@@ -122,6 +122,9 @@ class ResourceVirtualSensor(object):
         """ Constructor
         :type freq: str
         :param freq: frequency of measurements in Hz (tip: 20Hz)
+
+
+        the sensor will attempt to acquire the latest resource 100 times per second.
         """
         self.robot = robot
         self.freq = freq

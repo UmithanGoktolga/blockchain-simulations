@@ -74,7 +74,7 @@ class Odometry(object):
         self.ori = orientation
 
     def setPosition(self, position = [0,0]):
-        self.pos = position
+        self.pos = Vector2D(position)
 
     def getOrientation(self):
         return self.ori

@@ -169,6 +169,7 @@ class TicToc(object):
         self.delay = delay      
         self.stime = time.time()  
         self.name = name
+        self.sleep = sleep
 
     def tic(self):
         self.stime = time.time()    
@@ -176,10 +177,10 @@ class TicToc(object):
     def toc(self):
         dtime = time.time() - self.stime
 
-        if not sleep:
+        if not self.sleep:
             print(round(dtime,3)) 
 
-        if sleep and dtime < self.delay:
+        if self.sleep and dtime < self.delay:
             time.sleep(self.delay - dtime)
         else:
             # logger.warning('{} Pendulum too Slow. Elapsed: {}'.format(self.name,dtime))

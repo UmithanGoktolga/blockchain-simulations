@@ -18,6 +18,18 @@ from control_params import params as cp
 from loop_params import params as lp
 from loop_helpers import *
 
+import psutil
+
+def getRAMPercent():
+    """Returns the RAM usage percentage."""
+    return psutil.virtual_memory().percent
+
+def getCPUPercent():
+    """Returns the CPU usage percentage."""
+    # Using interval=0 gives the immediate (non-averaged) CPU usage
+    return psutil.cpu_percent(interval=None)
+
+
 #random.seed(lp['generic']['seed'])
 
 log_folder = lp['environ']['EXPERIMENTFOLDER'] + '/logs/0/'
@@ -26,6 +38,8 @@ os.makedirs(os.path.dirname(log_folder), exist_ok=True)
 
 # /* Global Variables */
 #######################################################################
+global allrobots
+allrobots = []
 
 global allresources, resource_counter
 allresources = []
@@ -61,6 +75,10 @@ other['foragers']    = dict()
 global myclock
 
 def init():
+    # Get reference to all robots
+    global allrobots
+    allrobots = [robot for robot in allrobots if robot is not None]  # Clean up any None entries
+    
     # Determine which robots are Byzantines
     byzantines = random.sample(allrobots, k=int(lp['environ']['NUMBYZANTINE']))
     for robot in byzantines:
@@ -77,10 +95,15 @@ def pre_step():
         startFlag = True
         
     myclock += 1
+    # Update CPU & RAM each step
+    RAM = getRAMPercent()
+    CPU = getCPUPercent()
+
     
     if myclock % 10 == 0:
         
-        print("Real", time.time() - startTime, "ARGoS", myclock)
+                print("Real", time.time() - startTime, "ARGoS", myclock,
+              "| CPU:", CPU, "% | RAM:", RAM, "%")
 
 def post_step():
     global startFlag

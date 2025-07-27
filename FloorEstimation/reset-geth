@@ -1,5 +1,5 @@
 #!/bin/bash
- 
+
 source experimentconfig.sh
 
 echo "+-----------------------------------------------------------+"
@@ -47,7 +47,7 @@ sed -ie "s|BINDATA|$BINDATA|g" ${GENESISFILE}
 sed -ie "s|0x47b760|0x9000000000000|g" ${GENESISFILE}
 # Change the value of the pre-funded accounts
 sed -ie "s|\"0x200000000000000000000000000000000000000000000000000000000000000\"|\"0x1236efcbcbb340000\"|g" ${GENESISFILE}
-# # Undo for the contract account (first match)
+# Undo for the contract account (first match)
 sed -ie "0,/\"0x1236efcbcbb340000\"/s//\"0x200000000000000000000000000000000000000000000000000000000000000\"/" ${GENESISFILE}
 
 # 0x1236efcbcbb340000 = 21 ether
@@ -57,13 +57,29 @@ echo "+-----------------------------------------------------------+"
 echo "Restarting the docker containers"
 
 ## Restart docker
+echo "Scaling down ethereum_eth service..."
 docker service scale ${CONTAINERBASE}=0
-echo "Shuting down docker process..."
-bash ${DOCKERFOLDER}/local_scripts/stop_network.sh $NUMROBOTS
+sleep 5  # Wait for the service to scale down
+
+echo "Stopping all containers..."
+docker ps -q | xargs -r docker stop
+sleep 5
+
+echo "Removing all containers..."
+docker ps -aq | xargs -r docker rm
+sleep 5
+
+echo "Removing network ethereum_default..."
+docker network rm ethereum_default || echo "Network not found."
+sleep 5
+
+echo "Restarting Docker service..."
+sudo systemctl restart docker.service
+sleep 5
 
 echo "Starting new docker process..."
-sudo systemctl restart docker.service
 bash ${DOCKERFOLDER}/local_scripts/start_network.sh $NUMROBOTS
+sleep 5
 
 echo "+-----------------------------------------------------------+"
 echo "Creating the identifier file"

@@ -72,7 +72,7 @@ run() {
 
 
 EXP=G1
-config "REPS" 20
+config "REPS" 3
 config "NUM1" 24
 config "FLOORFILE" 38.png
 config "ARENADIM" 1.9
@@ -82,7 +82,7 @@ config "NOTES" "\"Experiment 1 in the Science Robotics paper (24 robots with an 
 config "REALTIME" "true"
 
 
-for NUMBYZANTINE in 0 3 6 9; do
+for NUMBYZANTINE in 0 3 6; do
     CFG=24rob-${NUMBYZANTINE}byz
     config "NUMBYZANTINE" ${NUMBYZANTINE}
     wait

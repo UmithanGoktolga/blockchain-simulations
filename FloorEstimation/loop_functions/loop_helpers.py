@@ -9,7 +9,7 @@ sys.path += [os.environ['EXPERIMENTFOLDER']+'/controllers', \
              os.environ['EXPERIMENTFOLDER']+'/loop_functions', \
              os.environ['EXPERIMENTFOLDER']]
 
-from aux import Vector2D
+from controllers.aux import Vector2D
 from loop_params import params as lp
 
 for file in lp['files'].values():

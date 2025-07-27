@@ -11,8 +11,8 @@ sys.path += [os.environ['EXPERIMENTFOLDER']+'/controllers', \
              os.environ['EXPERIMENTFOLDER']+'/loop_functions', \
              os.environ['EXPERIMENTFOLDER']]
 
-from aux import Vector2D, Logger, Timer, Accumulator, mydict, identifiersExtract
-from groundsensor import Resource
+from controllers.aux import Vector2D, Logger, Timer, Accumulator, mydict, identifiersExtract
+from controllers.groundsensor import Resource
 
 from control_params import params as cp
 from loop_params import params as lp

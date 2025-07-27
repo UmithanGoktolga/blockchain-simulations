@@ -7,6 +7,10 @@ import random, math, copy
 import time, sys, os
 import logging
 from threading import Thread
+from contextlib import contextmanager
+import signal
+import threading
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 
 experimentFolder = os.environ['EXPERIMENTFOLDER']
 sys.path += [os.environ['EXPERIMENTFOLDER']+'/controllers', \
@@ -21,7 +25,7 @@ from console import *
 from aux import *
 from statemachine import *
 
-from loop_params import params as lp
+from loop_functions.loop_params import params as lp
 from control_params import params as cp
 
 # /* Logging Levels for Console and File */
@@ -152,7 +156,7 @@ def init():
 
     name          = 'estimate.csv'
     header        = ['ESTIMATE']
-    logs['estimate'] = Logger(log_folder+name, header, 10, ID=robotID)
+    logs['estimate'] = Logger(log_folder+name, header, 10, ID=robotID) # 10 Hz de LOGLAR, ben düşündüm frekansını AI söyledi
     
     
     # /* Initialize submodules */
@@ -201,35 +205,79 @@ def init():
     txs['vote'] = Transaction(None)
 
 
-def background_ask_for_ubi():
-    w3.sc.functions.askForUBI().transact()
+def background_ask_for_ubi(retry=0):
+    try:
+        w3.sc.functions.askForUBI().transact()
+        print("Transaction successful")
+    except Exception as e:
+        if "result expired" in str(e):
+            print("Transaction result expired, stopping thread...")
+        else:
+            print(f"Transaction failed: {str(e)}")
+        if retry < 3:  # Retry up to 3 times
+            time.sleep(2**retry)  # Exponential backoff
+            print(f"Retrying transaction, attempt {retry+1}")
+            background_ask_for_ubi(retry+1)
+        else:
+            print("Transaction failed after 3 attempts")
 
+''''
 def background_ask_for_payout():
     w3.sc.functions.askForPayout().transact()
+'''
 
-def background_update_mean():
-    w3.sc.functions.updateMean().transact()
+
+import time
+
+def background_ask_for_payout(retry=0):
+    try:
+        w3.sc.functions.askForPayout().transact()
+        print("Transaction successful")
+    except Exception as e:
+        print(f"Transaction failed: {str(e)}")
+        if retry < 3:  # Retry up to 3 times
+            time.sleep(2**retry)  # Exponential backoff
+            print(f"Retrying transaction, attempt {retry+1}")
+            background_ask_for_payout(retry+1)
+        else:
+            print("Transaction failed after 3 attempts")
+
+
+def background_update_mean(retry=0):
+    try:
+        w3.sc.functions.updateMean().transact()
+        print("Update mean transaction successful")
+    except Exception as e:
+        print(f"Update mean transaction failed: {str(e)}")
+        if retry < 3:  # Retry up to 3 times
+            time.sleep(2**retry)  # Exponential backoff
+            print(f"Retrying update mean, attempt {retry+1}")
+            background_update_mean(retry+1)
+        else:
+            print("Update mean failed after 3 attempts")
 
 def background_register_robot():
     w3.sc.functions.registerRobot().transact()
     
-def background_vote(estimate, ticket_price_wei):
+def background_vote(estimate, ticket_price_wei, retry=0):
+    try:
+        if txs['vote'].query(0):
+            txs['vote'] = Transaction(None)
+        elif txs['vote'].fail:
+            txs['vote'] = Transaction(None)
+        elif txs['vote'].hash == None:
+            txHash = w3.sc.functions.sendVote(int(estimate*1e7)).transact({'value': ticket_price_wei})
+            txs['vote'] = Transaction(txHash)
+    except Exception as e:
+        print(f"Vote transaction failed: {str(e)}")
+        if retry < 3:
+            time.sleep(2**retry)
+            print(f"Retrying vote, attempt {retry+1}")
+            background_vote(estimate, ticket_price_wei, retry+1)
+        else:
+            print("Vote failed after 3 attempts")
 
-    if txs['vote'].query(0):
-        txs['vote'] = Transaction(None)
 
-    elif txs['vote'].fail:
-        #print("TX failed")
-        txs['vote'] = Transaction(None)
-    
-    # Everything fine, ready to vote!
-    elif txs['vote'].hash == None:
-        #print("Voting as usual")
-        
-        txHash = w3.sc.functions.sendVote(int(estimate*1e7)).transact({'value': ticket_price_wei})
-        txs['vote'] = Transaction(txHash)
-
-    
 #########################################################################################################################
 #### CONTROL STEP #######################################################################################################
 #########################################################################################################################
@@ -429,13 +477,77 @@ def controlstep():
 def reset():
     pass
 
+def run_with_timeout(func, timeout_seconds):
+    """Run a function with timeout that works in any thread"""
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        future = executor.submit(func)
+        try:
+            return future.result(timeout=timeout_seconds)
+        except FuturesTimeoutError:
+            print(f"Function {func.__name__} timed out")
+            return None
+        
 def destroy():
-    if startFlag:
-        w3.geth.miner.stop()
-        for enode in getEnodes():
-            w3.geth.admin.removePeer(enode)
+    """Cleanup when experiment is done"""
+    global startFlag, w3, me, vote_thread
 
-    print('Killed robot '+ me.id)
+    if startFlag:
+        # Stop any running threads
+        try:
+            if vote_thread and vote_thread.is_alive():
+                vote_thread.join(timeout=5)  # Wait up to 5 seconds for thread to finish
+        except Exception as e:
+            logging.warning(f"Error stopping threads: {e}")
+
+        # Stop the miner with timeout
+        try:
+            def stop_miner():
+                w3.geth.miner.stop()
+                return True
+
+            if run_with_timeout(stop_miner, 5):
+                print(f"Miner stopped for robot {me.id}")
+            else:
+                print(f"Timeout stopping miner for robot {me.id}")
+        except Exception as e:
+            print(f"Error stopping miner for robot {me.id}: {str(e)}")
+
+        # Remove peers with timeout
+        try:
+            def remove_peers():
+                peers = getEnodes()
+                for enode in peers:
+                    try:
+                        w3.geth.admin.removePeer(enode)
+                        print(f"Removed peer {enode}")
+                    except Exception as e:
+                        print(f"Failed to remove peer {enode}: {str(e)}")
+                return True
+
+            if not run_with_timeout(remove_peers, 5):
+                print(f"Timeout removing peers for robot {me.id}")
+        except Exception as e:
+            print(f"Error getting/removing peers: {str(e)}")
+
+        # Wait for all threads to finish
+        try:
+            for thread in threading.enumerate():
+                if thread != threading.current_thread():  # Skip the main thread
+                    thread.join(timeout=5)
+        except Exception as e:
+            print(f"Error waiting for threads: {str(e)}")
+
+        # Final cleanup
+        try:
+            if hasattr(w3, '_provider'):
+                w3._provider.close()
+        except Exception as e:
+            print(f"Error during final cleanup: {str(e)}")
+
+    try:
+        print(f'Killed robot {me.id}')
+    except:
+        print('Killed robot (ID unknown)')
 
 #########################################################################################################################
 #########################################################################################################################
