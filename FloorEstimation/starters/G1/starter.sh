@@ -40,6 +40,7 @@ import() {
 
 ##################################################################################
 ### EXAMPLE: run "test116_patchy/20_blockchain1"
+: <<'COMMENT'
 run() {
 
 	# Configure experiment
@@ -49,7 +50,7 @@ run() {
 	if  [[ $2 = "--test" || $2 = "-t" ]]; then
 		echo "Running test ${1}"
 		. starter -r -s
-		    bash collect-logs ${1}
+			bash collect-logs ${1}
 	elif [[ $2 = "--no-blockchain" || $2 = "-n" ]]; then
 		echo "Running blockchain free test ${1}"
 		. starter -s
@@ -62,7 +63,7 @@ run() {
 
 			# Collect data
 			if [ $# -eq 1 ]; then
-			    bash collect-logs ${1}
+				bash collect-logs ${1}
 			fi
 			
 		done
@@ -70,21 +71,155 @@ run() {
 }
 
 
+run() {
+
+    # Configure experiment
+    . experimentconfig.sh
+
+    # Generate a timestamp for this entire run (to avoid collisions)
+    export LC_TIME=C # Ensure English locale for date
+    TIMESTAMP=$(date +"%Y%m%d_%H%M%S") # Fully numeric format
+    EXPERIMENT_FOLDER="${DATAFOLDER}/experiment_${EXP}/${CFG}/${TIMESTAMP}"
+    mkdir -p "${EXPERIMENT_FOLDER}"
+
+    # If is a testrun
+    if [[ $2 = "--test" || $2 = "-t" ]]; then
+        echo "Running test ${1}"
+        . starter -r -s
+        bash collect-logs ${1} "${EXPERIMENT_FOLDER}/test"
+    elif [[ $2 = "--no-blockchain" || $2 = "-n" ]]; then
+        echo "Running blockchain-free test ${1}"
+        . starter -s
+        bash collect-logs ${1} "${EXPERIMENT_FOLDER}/no-blockchain"
+    else
+        for REP in $(seq 1 ${REPS}); do
+            echo "Running experiment ${CFG} (Repetition ${REP})"
+
+            # Create a folder for this repetition
+            REP_FOLDER="${EXPERIMENT_FOLDER}/${REP}"
+            mkdir -p "${REP_FOLDER}"
+
+            # Perform the experiment
+            . starter -r -s
+
+            # Collect data
+            if [ $# -eq 1 ]; then
+                bash collect-logs ${1} "${REP_FOLDER}"
+            fi
+
+            # Wait between repetitions (optional)
+            echo "Waiting before next repetition..."
+            sleep 10
+        done
+    fi
+}
+COMMENT
+
+run() {
+    # Configure experiment
+    . experimentconfig.sh
+
+    # Generate a timestamp for this entire run (to avoid collisions)
+    export LC_TIME=C # Ensure English locale for date
+    TIMESTAMP=$(date +"%Y%m%d_%H%M%S") # Fully numeric format
+    EXPERIMENT_FOLDER="${DATAFOLDER}/experiment_${EXP}/${CFG}/${TIMESTAMP}"
+    mkdir -p "${EXPERIMENT_FOLDER}"
+
+    # If is a testrun
+    if [[ $2 = "--test" || $2 = "-t" ]]; then
+        echo "Running test ${1}"
+        . starter -r -s
+        bash collect-logs ${1} "${EXPERIMENT_FOLDER}/test"
+    elif [[ $2 = "--no-blockchain" || $2 = "-n" ]]; then
+        echo "Running blockchain-free test ${1}"
+        . starter -s
+        bash collect-logs ${1} "${EXPERIMENT_FOLDER}/no-blockchain"
+    else
+        for REP in $(seq 1 ${REPS}); do
+            echo "Running experiment ${CFG} (Repetition ${REP})"
+
+            # Create a folder for this repetition
+            REP_FOLDER="${EXPERIMENT_FOLDER}/${REP}"
+            mkdir -p "${REP_FOLDER}"
+
+            # Perform the experiment
+            echo "Starting experiment with . starter -r -s"
+            . starter -r -s
+            echo "Experiment completed."
+
+            # Collect data
+            echo "Collecting logs..."
+            bash collect-logs ${1} "${REP_FOLDER}"
+            echo "Logs collected."
+
+            # Wait between repetitions (optional)
+            echo "Waiting before next repetition..."
+            sleep 10
+        done
+    fi
+    echo "Run function completed for ${CFG}"
+}
+
+: <<'COMMENT'
+run() {
+
+    # Configure experiment
+    . experimentconfig.sh
+
+    # Generate a timestamp for this entire run (to avoid collisions)
+    TIMESTAMP=$(date +"%d%b%Y_%H-%M")
+    EXPERIMENT_FOLDER="${DATAFOLDER}/experiment_${EXP}/${CFG}/${TIMESTAMP}"
+    mkdir -p "${EXPERIMENT_FOLDER}"
+
+    # If is a testrun
+    if [[ $2 = "--test" || $2 = "-t" ]]; then
+        echo "Running test ${1}"
+        . starter -r -s
+        bash collect-logs ${1} "${EXPERIMENT_FOLDER}/test"
+    elif [[ $2 = "--no-blockchain" || $2 = "-n" ]]; then
+        echo "Running blockchain-free test ${1}"
+        . starter -s
+        bash collect-logs ${1} "${EXPERIMENT_FOLDER}/no-blockchain"
+    else
+        for REP in $(seq 1 ${REPS}); do
+            echo "Running experiment ${CFG} (Repetition ${REP})"
+
+            # Create a folder for this repetition
+            REP_FOLDER="${EXPERIMENT_FOLDER}/${REP}"
+            mkdir -p "${REP_FOLDER}"
+
+            # Perform the experiment
+            . starter -r -s
+
+            # Collect data
+            if [ $# -eq 1 ]; then
+                bash collect-logs ${1} "${REP_FOLDER}"
+            fi
+
+            # Wait between repetitions (optional)
+            echo "Waiting before next repetition..."
+            sleep 10
+        done
+    fi
+}
+
+COMMENT
 
 EXP=G1
-config "REPS" 3
+config "REPS" 1
 config "NUM1" 24
 config "FLOORFILE" 38.png
 config "ARENADIM" 1.9
 config "ARENADIMH" 0.95
-config "RABRANGE" 0.13
+config "RABRANGE" 0.33 #0.13 e geri çek hızlı consensus için artırıldı
 config "NOTES" "\"Experiment 1 in the Science Robotics paper (24 robots with an increasing number of Byzantines)\""
 config "REALTIME" "true"
 
 
 for NUMBYZANTINE in 0 3 6; do
-    CFG=24rob-${NUMBYZANTINE}byz
+    CFG=24rob-${NUMBYZANTINE}byz    
     config "NUMBYZANTINE" ${NUMBYZANTINE}
     wait
     run "${EXP}/${CFG}" $1
+    echo "/n Completed run for NUMBYZANTINE=${NUMBYZANTINE}/n"
 done

@@ -6,15 +6,17 @@ source experimentconfig.sh
 LOGSFOLDER="$EXPERIMENTFOLDER/logs/"
 DATAFOLDER="$EXPERIMENTFOLDER/results/data/experiment_$1/"
 COMMFOLDER=""
+REP_FOLDER=$2  # Repetition folder passed from starter.sh
+
 
 # Create the experiment directory
-mkdir -p $LOGSFOLDER $DATAFOLDER $PLOTFOLDER
+mkdir -p $LOGSFOLDER $DATAFOLDER $PLOTFOLDER $REP_FOLDER
 
 # Find the latest repetition in that folder
 #last_rep=$(ls $DATAFOLDER -v | tail -1 | sed 's/^0*//')
-last_rep=$(ls $DATAFOLDER -v | tail -1)
+#last_rep=$(ls $DATAFOLDER -v | tail -1)
 #new_rep=$(printf "%03d\n" $(($last_rep+1)))
-new_rep=$(printf "%d\n" $(($last_rep+1)))
+#new_rep=$(printf "%d\n" $(($last_rep+1)))
 
 # Collect experiment configuration into /logs/
 python3 collect-config.py
@@ -29,8 +31,8 @@ done
 
 cp -rp $DOCKERFOLDER/geth/communication_size/ $LOGSFOLDER
 
-# Collect data from /logs/ into /results/data
-cp -rp $LOGSFOLDER $DATAFOLDER$new_rep
+# Move data from /logs/ into the repetition folder
+cp -rp $LOGSFOLDER/* $REP_FOLDER/
 
-echo "Storing data to: /results/data/experiment_$1$new_rep"
+echo "Storing data to: $REP_FOLDER"
 

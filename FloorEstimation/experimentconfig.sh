@@ -37,7 +37,7 @@ export CON1="${EXPERIMENTFOLDER}/controllers/main.py"
 export MYLOOP="loop_function_convergence.py"
 
 
-export RABRANGE=0.13
+export RABRANGE=0.33
 export WHEELNOISE="0"
 export TPS=1
 export DENSITY="1"
@@ -56,5 +56,5 @@ export BLOCKPERIOD=15
 export SEED=1500
 export TIMELIMIT=100
 export SLEEPTIME=5
-export REPS=3
+export REPS=1
 export NOTES="Experiment 1 in the Science Robotics paper (24 robots with an increasing number of Byzantines)"
