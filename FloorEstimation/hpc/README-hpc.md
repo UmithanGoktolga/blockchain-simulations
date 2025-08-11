@@ -93,14 +93,14 @@ Expect a hex "0xN" result after the peering service writes static peers.
 | `HPC_BASE_OFFSET` | 1000×TASK_ID | Port offset for collision avoidance |
 | `P2P_BASE` | 30303 | Base P2P port |
 | `HTTP_BASE` | 8545 | Base HTTP-RPC port |
-| `WS_BASE` | 8546 | Base WebSocket port |
+| `WS_BASE` | 8645 | Base WebSocket port |
 | `NETWORK_ID` | 456719 | Ethereum network ID (matches existing) |
 
 ### Port Strategy
 
 For array index A and robot/node index i (0-based):
 - **HTTP**: 8545 + 1000×A + i
-- **WebSocket**: 8546 + 1000×A + i  
+- **WebSocket**: 8645 + 1000×A + i  
 - **P2P**: 30303 + 1000×A + i
 
 This allows up to ~999 parallel array indices on a host without conflicts.
