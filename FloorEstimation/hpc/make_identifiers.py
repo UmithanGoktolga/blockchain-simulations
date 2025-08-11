@@ -41,8 +41,9 @@ def main():
     host_ip = get_host_ip()
     
     # Generate identifiers in the format expected by controllers
+    # Format: ethereum_eth.{i}.    {host_ip}    {host_ip}
     for i in range(n):
-        print(f"{i}\t{host_ip}")
+        print(f"ethereum_eth.{i}.\t{host_ip}\t{host_ip}")
 
 if __name__ == "__main__":
     main()
