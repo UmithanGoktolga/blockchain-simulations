@@ -3,3 +3,4 @@ identifiers.txt
 
 # HPC build artifacts
 hpc/*.sif
+hpc/__pycache__/
