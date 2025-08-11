@@ -1,0 +1,32 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%post
+    # Update package list
+    apt-get update
+    
+    # Install basic tools
+    apt-get install -y wget curl software-properties-common jq python3 python3-pip
+    
+    # Add Ethereum PPA and install geth
+    add-apt-repository -y ppa:ethereum/ethereum
+    apt-get update
+    apt-get install -y ethereum
+    
+    # Install Python packages
+    pip3 install web3 rpyc hexbytes
+    
+    # Clean up
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+%runscript
+    exec "$@"
+
+%labels
+    Author "HPC blockchain simulations"
+    Version v1.0
+
+%help
+    This container provides geth and Python tools for blockchain simulations.
+    Use with: apptainer run geth.sif <command>
