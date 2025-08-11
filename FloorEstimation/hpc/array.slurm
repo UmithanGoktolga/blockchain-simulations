@@ -52,6 +52,7 @@ echo "Working directory: ${WORKDIR}"
 
 # Build SIF if missing
 SIF_PATH="${SCRIPT_DIR}/geth.sif"
+export SIF="${SIF_PATH}"  # Export for child scripts
 if [[ ! -f "${SIF_PATH}" ]]; then
     echo "Building Apptainer SIF..."
     cd "${SCRIPT_DIR}"
@@ -63,6 +64,16 @@ fi
 echo "Preparing working directory..."
 mkdir -p "${WORKDIR}"
 mkdir -p logs
+
+# Validate prerequisites
+if [[ ! -f "${EXPERIMENT_DIR}/experimentconfig.sh" ]]; then
+    echo "Error: experimentconfig.sh not found in ${EXPERIMENT_DIR}"
+    exit 1
+fi
+
+if [[ ! -f "${EXPERIMENT_DIR}/experiments/fast-floor.x.argos" ]]; then
+    echo "Warning: ARGoS template file not found, experiment may fail"
+fi
 
 # Source experiment configuration
 cd "${EXPERIMENT_DIR}"

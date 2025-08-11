@@ -24,13 +24,22 @@ def get_host_ip():
 def get_enode_address(nodekey_path):
     """Get the public key/enode address for a given nodekey file."""
     try:
+        # Try using bootnode from container if available
         result = subprocess.run([
+            'apptainer', 'exec', os.environ.get('SIF', 'hpc/geth.sif'),
             'bootnode', '-nodekey', nodekey_path, '-writeaddress'
         ], capture_output=True, text=True, check=True)
         return result.stdout.strip()
-    except subprocess.CalledProcessError as e:
-        print(f"Error getting enode address for {nodekey_path}: {e}")
-        return None
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        # Fallback: try direct bootnode command
+        try:
+            result = subprocess.run([
+                'bootnode', '-nodekey', nodekey_path, '-writeaddress'
+            ], capture_output=True, text=True, check=True)
+            return result.stdout.strip()
+        except (subprocess.CalledProcessError, FileNotFoundError) as e:
+            print(f"Error getting enode address for {nodekey_path}: {e}")
+            return None
 
 
 def build_enode_url(peer_id, host_ip, p2p_base, base_offset):

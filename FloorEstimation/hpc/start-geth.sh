@@ -22,6 +22,19 @@ echo "Working directory: ${WORKDIR}"
 # Create working directory structure
 mkdir -p "${WORKDIR}"/{nodes,nodekeys,neighbors}
 
+# Check if SIF exists
+if [[ ! -f "${SIF}" ]]; then
+    echo "Error: Apptainer SIF not found at ${SIF}"
+    echo "Please run: bash hpc/build_geth_sif.sh"
+    exit 1
+fi
+
+# Check if genesis file exists
+if [[ ! -f "${GENESIS_JSON}" ]]; then
+    echo "Error: Genesis file not found at ${GENESIS_JSON}"
+    exit 1
+fi
+
 # Get host IP for NAT
 HOST_IP=$(hostname -I | awk '{print $1}')
 echo "Host IP: ${HOST_IP}"

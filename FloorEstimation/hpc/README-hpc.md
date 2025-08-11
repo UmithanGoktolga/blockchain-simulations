@@ -71,7 +71,7 @@ export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 NUMEXPR_NUM_TH
 sbatch --array=0-0 --mem=8G --cpus-per-task=1 hpc/array.slurm
 
 # Or for local testing without Slurm:
-python3 hpc/make_identifiers.py 6 | sed 's/ [0-9.]\+ / 127.0.0.1 /g' > identifiers.txt
+python3 hpc/make_identifiers.py 6 | sed 's/ [0-9.]\+ / 127.0.0.1 /g' | sed 's/ [0-9.]\+$/ 127.0.0.1/' > identifiers.txt
 ```
 
 **Sanity check:**
