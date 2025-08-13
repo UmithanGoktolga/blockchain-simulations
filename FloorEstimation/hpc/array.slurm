@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#SBATCH -J geth-net
 #SBATCH -p midst
 #SBATCH --array=0-79%32
 #SBATCH --mem=16G
@@ -6,163 +7,87 @@
 #SBATCH -o logs/%x-%j_%a.out
 #SBATCH -e logs/%x-%j_%a.err
 
-# HPC array job script for blockchain simulations
-# One repetition per array index
-
-set -e
-
-# Environment hygiene
-export OMP_NUM_THREADS=1
-export MKL_NUM_THREADS=1
-export OPENBLAS_NUM_THREADS=1
-export NUMEXPR_NUM_THREADS=1
-
-# Array index to config mapping
-byz=(0 2 4 6)
-CFG_IDX=$(( SLURM_ARRAY_TASK_ID / 20 ))
-REP=$(( SLURM_ARRAY_TASK_ID % 20 + 1 ))
-NUMBYZ=${byz[$CFG_IDX]}
-NUM1=24
-
-echo "=== HPC Blockchain Simulation ==="
-echo "Array Task ID: ${SLURM_ARRAY_TASK_ID}"
-echo "Config Index: ${CFG_IDX}"
-echo "Repetition: ${REP}"
-echo "Byzantine nodes: ${NUMBYZ}"
-echo "Total nodes: ${NUM1}"
-echo "Node: $(hostname)"
-echo "==============================="
-
-# HPC configuration
-export HPC_MODE=1
-export HPC_NUM_NODES=${NUM1}
-export HPC_BASE_OFFSET=$(( 1000 * SLURM_ARRAY_TASK_ID ))
-
-# Working directory
-WORKDIR="${SLURM_TMPDIR}/ethnet"
-export SLURM_TMPDIR="${SLURM_TMPDIR}"
-
-# Get script directory (hpc/)
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-EXPERIMENT_DIR="$(dirname "${SCRIPT_DIR}")"
-
-echo "Script directory: ${SCRIPT_DIR}"
-echo "Experiment directory: ${EXPERIMENT_DIR}"
-echo "Working directory: ${WORKDIR}"
-
-# Build SIF if missing
-SIF_PATH="${SCRIPT_DIR}/geth.sif"
-export SIF="${SIF_PATH}"  # Export for child scripts
-if [[ ! -f "${SIF_PATH}" ]]; then
-    echo "Building Apptainer SIF..."
-    cd "${SCRIPT_DIR}"
-    bash build_geth_sif.sh
-    cd "${EXPERIMENT_DIR}"
-fi
-
-# Prepare working directory
-echo "Preparing working directory..."
-mkdir -p "${WORKDIR}"
+set -euo pipefail
 mkdir -p logs
 
-# Validate prerequisites
-if [[ ! -f "${EXPERIMENT_DIR}/experimentconfig.sh" ]]; then
-    echo "Error: experimentconfig.sh not found in ${EXPERIMENT_DIR}"
-    exit 1
+# Thread hygiene
+export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+
+# Repo layout
+ROOT="$(pwd)/blockchain-simulations"
+FLOOR="$ROOT/FloorEstimation"
+HPC="$FLOOR/hpc"
+
+# Defaults (can be overridden from env)
+export SIF="${SIF:-$HPC/geth.sif}"
+export GENESIS_JSON="${GENESIS_JSON:-$ROOT/argos-blockchain/geth/files/genesis_poa.json}"
+export HPC_NUM_NODES="${HPC_NUM_NODES:-24}"
+export HPC_BASE_OFFSET="${HPC_BASE_OFFSET:-$(( 1000 * ${SLURM_ARRAY_TASK_ID:-0} ))}"
+export NETWORK_ID="${NETWORK_ID:-456719}"
+export P2P_BASE="${P2P_BASE:-30303}"
+export HTTP_BASE="${HTTP_BASE:-8545}"
+export WS_BASE="${WS_BASE:-8546}"
+export HPC_MODE=1
+
+# Build SIF if missing
+if [ ! -f "$SIF" ]; then
+  echo "[array] building SIF → $SIF"
+  bash "$HPC/build_geth_sif.sh"
 fi
 
-if [[ ! -f "${EXPERIMENT_DIR}/experiments/fast-floor.x.argos" ]]; then
-    echo "Warning: ARGoS template file not found, experiment may fail"
-fi
+# Prepare per-task working dirs on fast tmp
+export WORKDIR="${SLURM_TMPDIR:-/tmp}/ethnet"
+mkdir -p "$WORKDIR" "$WORKDIR/nodes" "$WORKDIR/nodekeys" "$WORKDIR/neighbors"
 
-# Source experiment configuration
-cd "${EXPERIMENT_DIR}"
-source experimentconfig.sh
+# Map array index → (BYZ, REP)
+byz=(0 2 4 6)
+CFG_IDX=$(( SLURM_ARRAY_TASK_ID / 20 ))     # 0..3
+REP=$(( SLURM_ARRAY_TASK_ID % 20 + 1 ))     # 1..20
+NUMBYZ="${byz[$CFG_IDX]}"
+NUM1="${HPC_NUM_NODES}"
 
-# Override configuration for HPC
-export NUM1=${NUM1}
-export NUMBYZANTINE=${NUMBYZ}
+# Host IP
+HOST_IP=$(hostname -I | awk '{print $1}')
+echo "[array] host_ip=$HOST_IP  task_id=$SLURM_ARRAY_TASK_ID  cfg=$NUMBYZ  rep=$REP"
+
+# Generate identifiers.txt where controllers expect it
+pushd "$FLOOR" >/dev/null
+python3 "$HPC/make_identifiers.py" "$HPC_NUM_NODES" > identifiers.txt
+
+# Start geth swarm (24 nodes by default) and peering service
+bash "$HPC/start-geth.sh" &
+GETH_LAUNCH_PID=$!
+python3 "$HPC/peering_service.py" &
+PEER_PID=$!
+
+# ---- Run a single ARGoS repetition (REPS=1) w/o Docker ----
+# Prepare experiment env
+source "$FLOOR/experimentconfig.sh" || true
+# Force required knobs
+export NUM1="$NUM1"
+export NUMBYZANTINE="$NUMBYZ"
 export REPS=1
-export EXPERIMENTFOLDER="${EXPERIMENT_DIR}"
 
-# Generate identifiers.txt for controllers
-echo "Generating identifiers.txt..."
-python3 hpc/make_identifiers.py ${HPC_NUM_NODES} > "${WORKDIR}/identifiers.txt"
+# Ensure ARGoS file is set; fall back if not
+ARGOSFILE="${ARGOSFILE:-$FLOOR/experiments/fast-floor.argos}"
+SLEEPTIME="${SLEEPTIME:-2}"
 
-# Copy identifiers to experiment folder so controllers can find it
-cp "${WORKDIR}/identifiers.txt" "${EXPERIMENT_DIR}/"
+echo "[array] starting ARGoS: $ARGOSFILE"
+sleep "$SLEEPTIME"
+argos3 -z -c "$ARGOSFILE"
 
-# Function to cleanup background processes
-cleanup() {
-    echo "Cleaning up background processes..."
-    if [[ -n "${GETH_PID}" ]]; then
-        kill -TERM "${GETH_PID}" 2>/dev/null || true
-    fi
-    if [[ -n "${PEERING_PID}" ]]; then
-        kill -TERM "${PEERING_PID}" 2>/dev/null || true
-    fi
-    wait
-}
+# Collect logs/results from WORKDIR + logs/
+RESULTS_DIR="$FLOOR/results/experiment_${EXP:-default}/24rob-${NUMBYZ}byz/${REP}"
+mkdir -p "$RESULTS_DIR"
+[ -d "$WORKDIR" ] && cp -r "$WORKDIR"/* "$RESULTS_DIR"/ 2>/dev/null || true
+[ -d "$FLOOR/logs" ] && cp -r "$FLOOR/logs"/* "$RESULTS_DIR"/ 2>/dev/null || true
 
-trap cleanup EXIT SIGTERM SIGINT
+echo "[array] results → $RESULTS_DIR"
 
-# Launch Geth network in background
-echo "Starting Geth network..."
-bash "${SCRIPT_DIR}/start-geth.sh" &
-GETH_PID=$!
+# Cleanup processes
+trap "kill $GETH_LAUNCH_PID $PEER_PID 2>/dev/null || true" EXIT
+wait $GETH_LAUNCH_PID || true
+wait $PEER_PID || true
 
-# Give Geth nodes time to start
-sleep 10
-
-# Launch peering service in background
-echo "Starting peering service..."
-python3 "${SCRIPT_DIR}/peering_service.py" &
-PEERING_PID=$!
-
-# Give peering service time to start
-sleep 5
-
-# Update ARGoS configuration for HPC
-echo "Updating ARGoS configuration..."
-sed -e "s|REALTIME|$REALTIME|g"\
-    -e "s|NUMROBOTS|$NUMROBOTS|g"\
-    -e "s|WHEELNOISE|$WHEELNOISE|g"\
-    -e "s|CON1|$CON1|g"\
-    -e "s|MYLOOP|$MYLOOP|g"\
-    -e "s|LENGTH|$LENGTH|g"\
-    -e "s|NUM1|$NUM1|g"\
-    -e "s|STARTDIM|$STARTDIM|g"\
-    -e "s|TPS|$TPS|g"\
-    -e "s|RABRANGE|$RABRANGE|g"\
-    -e "s|NUMBYZANTINE|$NUMBYZANTINE|g"\
-    -e "s|EXPERIMENTFOLDER|$EXPERIMENTFOLDER|g"\
-    -e "s|FLOORFILE|$FLOORFILE|g"\
-    -e "s|ARGOSFOLDER|$ARGOSFOLDER|g"\
-    -e "s|ARENADIMH|$ARENADIMH|g"\
-    -e "s|ARENADIM|$ARENADIM|g"\
-  $ARGOSTEMPLATE > $ARGOSFILE
-
-# Run experiment
-echo "Running ARGoS experiment..."
-argos3 -z -c $ARGOSFILE
-
-echo "ARGoS experiment completed"
-
-# Collect logs
-echo "Collecting logs..."
-EXP="HPC"
-RESULTS_DIR="${EXPERIMENT_DIR}/results/experiment_${EXP}/24rob-${NUMBYZ}byz/${REP}"
-mkdir -p "${RESULTS_DIR}"
-
-# Copy logs from working directory
-if [[ -d "${WORKDIR}" ]]; then
-    cp -r "${WORKDIR}"/* "${RESULTS_DIR}/" 2>/dev/null || true
-fi
-
-# Copy standard logs
-if [[ -d "logs" ]]; then
-    cp -r logs/* "${RESULTS_DIR}/" 2>/dev/null || true
-fi
-
-echo "Results stored in: ${RESULTS_DIR}"
-echo "HPC simulation completed successfully"
+popd >/dev/null
+echo "[array] done."
