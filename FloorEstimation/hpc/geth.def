@@ -1,0 +1,37 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%post
+    # Update package list
+    apt-get update
+
+    # Install essential packages
+    apt-get install -y software-properties-common curl wget gnupg2
+
+    # Add Ethereum PPA and install geth
+    add-apt-repository -y ppa:ethereum/ethereum
+    apt-get update
+    apt-get install -y ethereum
+
+    # Install Python3, pip, and jq
+    apt-get install -y python3 python3-pip jq
+
+    # Install required Python packages
+    pip3 install web3 rpyc hexbytes
+
+    # Clean up
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+%runscript
+    exec "$@"
+
+%labels
+    Author blockchain-simulations-hpc
+    Version v1.0
+
+%help
+    This container provides Geth (Ethereum client) and Python3 with web3/rpyc packages
+    for HPC blockchain simulations.
+    
+    Usage: apptainer run geth.sif <command>

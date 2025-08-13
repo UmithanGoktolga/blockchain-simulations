@@ -19,8 +19,10 @@ for num_byzantine in "${num_byzantines[@]}"; do
     echo "byzantine_swarm_style=${byzantine_swarm_style}" >> $python_config_file
 
 
-    # Restart docker containers
-    source starter.sh
+    # Restart docker containers (skip in HPC mode)
+    if [[ "${HPC_MODE}" != "1" ]]; then
+        source starter.sh
+    fi
 
     # Run experiment
 	
