@@ -1,0 +1,2 @@
+/var/spool/slurmd/job00017/slurm_script: line 13: module: command not found
+bash: starters/G1/slurm_starter.sh: No such file or directory

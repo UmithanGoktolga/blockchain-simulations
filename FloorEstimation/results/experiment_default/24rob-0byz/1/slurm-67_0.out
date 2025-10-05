@@ -1,0 +1,376 @@
+RUN_FOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation/results/data/BYZ_0_REP_1_20250810_035147
+Running experiment repetition 1
++-----------------------------------------------------------+
+MAINFOLDER IS /home/cug/thesis/blockchain-simulations
++-----------------------------------------------------------+
+Updating the ARGoS XML file
+/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
+/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
+DONE
++-----------------------------------------------------------+
+Resetting Geth...
++-----------------------------------------------------------+
+Updating the Smart Contract
++-----------------------------------------------------------+
+Sending python scripts
++-----------------------------------------------------------+
+Compiling the Smart Contract
++-----------------------------------------------------------+
+Generating the Genesis block
+Configuring Genesis Block...
+/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
+Block period = 15s
+Key Mapping
+Node 1 -> 0fa9077350fc3ee6924743e1ad9b735c657c455e
+Node 2 -> a4b1b07974bf67f04ec51becabf4ad62106b1dd0
+Node 3 -> 05d6edc4ff8ef40321abcf7886bc606ed13327b0
+Node 4 -> 633462025cf12d347c0df50b2114e65aa364f0a6
+Node 5 -> 036d6b4da0b4eeb9d312e958c2937d9016765f50
+Node 6 -> 77b770ceb4b2537e52f4534bb39e43754eb5b7e5
+Node 7 -> c72b1b70e69d270544369132d53529e37be87742
+Node 8 -> 26cbcac5281b6e159bc3e6c7400af25fa46f246b
+Node 9 -> d4aedd30d11907e10b6353e59685bb7efc14f55d
+Node 10 -> 5c5f829c4c3e8c4ab97390cb053a456616c27ea3
+Node 11 -> a79160bc038c07678c145f1b5220be15badb13d7
+Node 12 -> 3662fa93e6c3bcb04b95e5dd7b1266ad9e8a9965
++-----------------------------------------------------------+
+Restarting the docker containers
+Scaling down ethereum_eth service...
+Stopping all containers...
+Removing all containers...
+Removing network ethereum_default...
+Network not found.
+Restarting Docker service...
+Starting new docker process...
+Creating network ethereum_default
+Creating service ethereum_eth
+ethereum_eth scaled to 12
+overall progress: 0 out of 12 tasks
+1/12:  
+2/12:  
+3/12:  
+4/12:  
+5/12:  
+6/12:  
+7/12:  
+8/12:  
+9/12:  
+10/12:  
+11/12:  
+12/12:  
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 0 out of 12 tasks
+overall progress: 1 out of 12 tasks
+overall progress: 2 out of 12 tasks
+overall progress: 3 out of 12 tasks
+overall progress: 3 out of 12 tasks
+overall progress: 5 out of 12 tasks
+overall progress: 6 out of 12 tasks
+overall progress: 7 out of 12 tasks
+overall progress: 7 out of 12 tasks
+overall progress: 7 out of 12 tasks
+overall progress: 8 out of 12 tasks
+overall progress: 8 out of 12 tasks
+overall progress: 8 out of 12 tasks
+overall progress: 9 out of 12 tasks
+overall progress: 9 out of 12 tasks
+overall progress: 11 out of 12 tasks
+overall progress: 12 out of 12 tasks
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Service ethereum_eth converged
+4da801527af3
+d8a950617380
+64165621d0ba
+efa4c346432b
+c53e01a9ab52
+ff6f5b30092e
+0b4dbb8db138
+dc2351be0a41
+10630da4c214
+19f44e64a0f6
+e7d82c57ce41
+afd0f67e9f39
++-----------------------------------------------------------+
+Creating the identifier file
++-----------------------------------------------------------+
+Waiting web3 to respond...
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0
+Total responded: 0

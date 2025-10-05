@@ -22,7 +22,7 @@
       <actuators>
         <epuck_rgb_leds implementation="default" medium="leds" />
         <epuck_wheels implementation="default" noise_std_dev="0"/>
-        <epuck_range_and_bearing implementation="medium" range="0.13"/>
+        <epuck_range_and_bearing implementation="medium" range="0.35"/>
       </actuators>
       <sensors>
         <positioning implementation="default" />
@@ -69,7 +69,7 @@
     <distribute>
       <position method="uniform" min="-0.95,-0.95,0" max="0.95,0.95,0" /> 
       <orientation method="gaussian" mean="0,0,0" std_dev="360,0,0" /> 
-      <entity quantity="24" max_trials="15"> 
+      <entity quantity="12" max_trials="15"> 
         <e-puck id="fb" 
                   rab_range = "1">
           <controller config="collab" />

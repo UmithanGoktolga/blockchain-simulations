@@ -2,36 +2,56 @@ Bootstrap: docker
 From: ubuntu:22.04
 
 %post
-    # Update package list
+    set -e
+    export DEBIAN_FRONTEND=noninteractive
+
     apt-get update
+    apt-get install -y --no-install-recommends \
+        ca-certificates curl jq xz-utils python3 python3-pip \
+        software-properties-common gnupg dirmngr wget
 
-    # Install essential packages
-    apt-get install -y software-properties-common curl wget gnupg2
+    # Install specific version of geth (v1.10.26 - last pre-merge version with Clique support)
+    GETH_VERSION="1.10.26-e5eb32ac"
+    wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-${GETH_VERSION}.tar.gz
+    tar -xzf geth-linux-amd64-${GETH_VERSION}.tar.gz
+    cp geth-linux-amd64-${GETH_VERSION}/geth /usr/local/bin/
+    chmod +x /usr/local/bin/geth
+    rm -rf geth-linux-amd64-${GETH_VERSION}*
 
-    # Add Ethereum PPA and install geth
-    add-apt-repository -y ppa:ethereum/ethereum
-    apt-get update
-    apt-get install -y ethereum
-
-    # Install Python3, pip, and jq
-    apt-get install -y python3 python3-pip jq
-
-    # Install required Python packages
-    pip3 install web3 rpyc hexbytes
+    # Install Python libraries
+    pip3 install --no-cache-dir web3 rpyc hexbytes
 
     # Clean up
     apt-get clean
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* /root/.cache/pip
+
+%environment
+    # Set environment variables
+    export PATH=$PATH
+    export NETWORK_ID=456719
+    export GETH_HTTP_PORT=8545
+    export GETH_WS_PORT=8546
+    export GETH_HOST=127.0.0.1
 
 %runscript
+    # Default runscript to execute commands
     exec "$@"
 
-%labels
-    Author blockchain-simulations-hpc
-    Version v1.0
-
-%help
-    This container provides Geth (Ethereum client) and Python3 with web3/rpyc packages
-    for HPC blockchain simulations.
-    
-    Usage: apptainer run geth.sif <command>
+%startscript
+    # Start script for bootstrap and eth services
+    if [ "$1" = "bootstrap" ]; then
+        geth --datadir=/root/.ethereum/devchain --keystore=/root/.ethereum/devchain/keystores/KEYSTORE/ \
+            --lightkdf --ws --ws.addr "0.0.0.0" --ws.port $GETH_WS_PORT --ws.api "db,personal,eth,net,web3,admin,miner" \
+            --nodiscover --verbosity 6 --syncmode full --rpcapi "db,personal,eth,net,web3,admin" \
+            --allow-insecure-unlock --rpccorsdomain="*" --networkid=$NETWORK_ID --rpc --rpcaddr="0.0.0.0" \
+            --miner.gasprice 1 --nat=extip:$GETH_HOST
+    elif [ "$1" = "eth" ]; then
+        geth --datadir=/root/.ethereum/devchain --keystore=/root/.ethereum/devchain/keystores/KEYSTORE/ \
+            --lightkdf --ws --ws.addr "0.0.0.0" --ws.port $GETH_WS_PORT --ws.api "db,personal,eth,net,web3,admin,miner" \
+            --nodiscover --verbosity 2 --syncmode full --rpcapi "db,personal,eth,net,web3,admin" \
+            --allow-insecure-unlock --rpccorsdomain="*" --networkid=$NETWORK_ID --rpc --rpcaddr="0.0.0.0" \
+            --miner.gasprice 1 --nat=extip:$GETH_HOST
+    else
+        echo "Invalid service type. Use 'bootstrap' or 'eth'."
+        exit 1
+    fi

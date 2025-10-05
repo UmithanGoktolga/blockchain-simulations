@@ -1,0 +1,216 @@
+allexport      	off
+braceexpand    	on
+emacs          	off
+errexit        	on
+errtrace       	off
+functrace      	off
+hashall        	on
+histexpand     	off
+history        	off
+ignoreeof      	off
+interactive-comments	on
+keyword        	off
+monitor        	off
+noclobber      	off
+noexec         	off
+noglob         	off
+nolog          	off
+notify         	off
+nounset        	on
+onecmd         	off
+physical       	off
+pipefail       	on
+posix          	off
+privileged     	off
+verbose        	off
+vi             	off
+xtrace         	on
+[array] host_ip=192.168.1.152  task_id=0  cfg=0  rep=1
+[array] waiting for geth JSON-RPC on :8545
+[array] JSON-RPC ready
+[array] starting ARGoS: /home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
+[geth] starting node0 p2p=30303 http=8545 natip=192.168.1.152
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_qtopengl.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_prototype.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_pointmass3d.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_entities.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_spiri.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_footbot.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d_magnetism.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_epuck.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_pipuck.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_eyebot.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_media.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_drone.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_genericrobot.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_builderbot.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_block.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d_gravity.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d_srocs.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3core_simulator.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d_floor.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics2d.so[0m[1;32m"[0m
+[1;32m[INFO] Using [0m[1;32m1[0m[1;32m parallel threads[0m
+[1;32m[INFO]   Chosen method "balance_quantity": threads will be assigned the same[0m
+[1;32m[INFO]   number of tasks, independently of the task length.[0m
+[1;32m[INFO] Using random seed = [0m[1;32m954726[0m
+[1;32m[INFO] Using simulation clock tick = [0m[1;32m1[0m
+[1;32m[INFO] Total experiment length in clock ticks = [0m[1;32m5000[0m
+[1;32m[INFO] Using the real-time clock.[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/home/cug/thesis/blockchain-simulations/argos-python/build/libpy_controller_interface.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/home/cug/thesis/blockchain-simulations/argos-python/build/libpy_loop_function_interface.so[0m[1;32m"[0m
+Controller strScript:/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py
+fb0
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+Loop function: strScript:/home/cug/thesis/blockchain-simulations/FloorEstimation/loop_functions/loop_function_convergence.py
+[1;32m[INFO] The physics engine "[0m[1;32mdyn2d[0m[1;32m" will perform [0m[1;32m10[0m[1;32m iterations per tick (dt = [0m[1;32m0.1[0m[1;32m sec)[0m
+[1;32m[INFO] No visualization selected.[0m
+Real 9.000577211380005 ARGoS 10 | CPU: 22.3 % | RAM: 84.8 %
+Real 19.001137495040894 ARGoS 20 | CPU: 23.7 % | RAM: 84.8 %
+Real 29.001720666885376 ARGoS 30 | CPU: 27.0 % | RAM: 84.8 %
+Real 39.00234246253967 ARGoS 40 | CPU: 25.6 % | RAM: 85.0 %
+Real 49.00299882888794 ARGoS 50 | CPU: 24.1 % | RAM: 84.9 %
+Real 59.00346899032593 ARGoS 60 | CPU: 24.8 % | RAM: 84.9 %
+Real 69.00410342216492 ARGoS 70 | CPU: 26.7 % | RAM: 85.1 %
+Real 79.00471520423889 ARGoS 80 | CPU: 25.7 % | RAM: 86.0 %
+Real 89.00522947311401 ARGoS 90 | CPU: 28.8 % | RAM: 86.1 %
+Real 99.00586318969727 ARGoS 100 | CPU: 25.7 % | RAM: 86.2 %
+Real 109.00646448135376 ARGoS 110 | CPU: 23.0 % | RAM: 86.3 %
+Real 119.00717520713806 ARGoS 120 | CPU: 26.1 % | RAM: 86.4 %
+Real 129.0076973438263 ARGoS 130 | CPU: 38.1 % | RAM: 87.1 %
+Real 139.0081751346588 ARGoS 140 | CPU: 23.2 % | RAM: 86.4 %
+Real 149.0087811946869 ARGoS 150 | CPU: 36.0 % | RAM: 86.1 %
+Real 159.0093972682953 ARGoS 160 | CPU: 23.2 % | RAM: 86.1 %
+Real 169.01007175445557 ARGoS 170 | CPU: 23.7 % | RAM: 86.1 %
+Real 179.01067304611206 ARGoS 180 | CPU: 22.7 % | RAM: 86.0 %
+Real 189.01122450828552 ARGoS 190 | CPU: 23.0 % | RAM: 86.0 %
+Real 199.01179671287537 ARGoS 200 | CPU: 34.1 % | RAM: 85.9 %
+Real 209.01242113113403 ARGoS 210 | CPU: 22.3 % | RAM: 86.6 %
+Real 219.01309657096863 ARGoS 220 | CPU: 43.5 % | RAM: 86.5 %
+Real 229.01359724998474 ARGoS 230 | CPU: 24.6 % | RAM: 86.4 %
+Real 239.01423597335815 ARGoS 240 | CPU: 28.1 % | RAM: 85.8 %
+Real 249.01480722427368 ARGoS 250 | CPU: 30.4 % | RAM: 88.4 %
+Real 259.01564598083496 ARGoS 260 | CPU: 34.6 % | RAM: 86.0 %
+Real 269.01598715782166 ARGoS 270 | CPU: 26.6 % | RAM: 86.2 %
+Real 279.01683163642883 ARGoS 280 | CPU: 31.5 % | RAM: 86.1 %
+Real 289.01723885536194 ARGoS 290 | CPU: 38.2 % | RAM: 86.2 %
+Real 299.0179600715637 ARGoS 300 | CPU: 26.0 % | RAM: 86.3 %
+Real 309.018474817276 ARGoS 310 | CPU: 28.3 % | RAM: 86.3 %
+Real 319.0188658237457 ARGoS 320 | CPU: 22.7 % | RAM: 86.3 %
+Real 329.0193510055542 ARGoS 330 | CPU: 22.9 % | RAM: 86.3 %
+Real 339.0200045108795 ARGoS 340 | CPU: 24.9 % | RAM: 86.0 %
+Real 349.0205805301666 ARGoS 350 | CPU: 23.9 % | RAM: 86.0 %
+Real 359.0212593078613 ARGoS 360 | CPU: 23.4 % | RAM: 85.9 %
+Real 369.0218183994293 ARGoS 370 | CPU: 24.2 % | RAM: 85.8 %
+Real 379.0224230289459 ARGoS 380 | CPU: 25.9 % | RAM: 85.8 %
+Real 389.0230824947357 ARGoS 390 | CPU: 28.6 % | RAM: 85.8 %
+Real 399.0236723423004 ARGoS 400 | CPU: 29.3 % | RAM: 85.8 %
+Real 409.0242269039154 ARGoS 410 | CPU: 23.2 % | RAM: 85.8 %
+Real 419.0250747203827 ARGoS 420 | CPU: 26.4 % | RAM: 85.9 %
+Real 429.025354385376 ARGoS 430 | CPU: 24.5 % | RAM: 85.9 %
+Real 439.0259747505188 ARGoS 440 | CPU: 27.4 % | RAM: 85.9 %
+Real 449.0264825820923 ARGoS 450 | CPU: 30.8 % | RAM: 86.2 %
+Real 459.0271804332733 ARGoS 460 | CPU: 23.5 % | RAM: 86.2 %
+Real 469.027836561203 ARGoS 470 | CPU: 27.6 % | RAM: 85.7 %
+Real 479.02831530570984 ARGoS 480 | CPU: 25.8 % | RAM: 85.9 %
+Real 489.0288898944855 ARGoS 490 | CPU: 25.3 % | RAM: 86.0 %
+Real 499.0295355319977 ARGoS 500 | CPU: 31.5 % | RAM: 88.8 %
+Real 509.03010630607605 ARGoS 510 | CPU: 24.1 % | RAM: 86.4 %
+Real 519.0306775569916 ARGoS 520 | CPU: 31.2 % | RAM: 86.4 %
+Real 529.0317497253418 ARGoS 530 | CPU: 36.5 % | RAM: 86.6 %
+Real 539.0318286418915 ARGoS 540 | CPU: 24.5 % | RAM: 86.9 %
+Real 549.0324320793152 ARGoS 550 | CPU: 23.7 % | RAM: 86.5 %
+Real 559.033124923706 ARGoS 560 | CPU: 31.6 % | RAM: 89.5 %
+Real 569.0335977077484 ARGoS 570 | CPU: 24.3 % | RAM: 86.8 %
+Real 579.0341196060181 ARGoS 580 | CPU: 22.0 % | RAM: 86.5 %
+Real 589.0346932411194 ARGoS 590 | CPU: 24.4 % | RAM: 86.6 %
+Real 599.0354702472687 ARGoS 600 | CPU: 24.3 % | RAM: 87.0 %
+Real 609.0359818935394 ARGoS 610 | CPU: 30.5 % | RAM: 88.1 %
+Real 619.0365509986877 ARGoS 620 | CPU: 23.8 % | RAM: 86.2 %
+Real 629.0371870994568 ARGoS 630 | CPU: 24.9 % | RAM: 86.3 %
+Real 639.0377752780914 ARGoS 640 | CPU: 23.0 % | RAM: 86.3 %
+Real 649.0383076667786 ARGoS 650 | CPU: 23.6 % | RAM: 86.3 %
+Real 659.0389139652252 ARGoS 660 | CPU: 30.7 % | RAM: 86.4 %
+Real 669.0396146774292 ARGoS 670 | CPU: 29.3 % | RAM: 86.4 %
+Real 679.0401871204376 ARGoS 680 | CPU: 23.8 % | RAM: 86.4 %
+Real 689.0407655239105 ARGoS 690 | CPU: 24.0 % | RAM: 86.4 %
+Real 699.04141497612 ARGoS 700 | CPU: 32.1 % | RAM: 86.6 %
+Real 709.0418703556061 ARGoS 710 | CPU: 26.4 % | RAM: 86.7 %
+Real 719.0425546169281 ARGoS 720 | CPU: 23.5 % | RAM: 86.6 %
+Real 729.043062210083 ARGoS 730 | CPU: 23.4 % | RAM: 86.9 %
+Real 739.0436453819275 ARGoS 740 | CPU: 20.9 % | RAM: 86.8 %
+Real 749.0443046092987 ARGoS 750 | CPU: 24.2 % | RAM: 86.8 %
+Real 759.0455138683319 ARGoS 760 | CPU: 24.6 % | RAM: 86.8 %
+Real 769.0453808307648 ARGoS 770 | CPU: 23.4 % | RAM: 86.7 %
+Real 779.0459160804749 ARGoS 780 | CPU: 22.8 % | RAM: 86.8 %
+Real 789.0466067790985 ARGoS 790 | CPU: 22.8 % | RAM: 87.3 %
+Real 799.0471625328064 ARGoS 800 | CPU: 24.6 % | RAM: 87.4 %
+Real 809.0478081703186 ARGoS 810 | CPU: 47.2 % | RAM: 89.5 %
+Real 819.0484519004822 ARGoS 820 | CPU: 34.7 % | RAM: 87.3 %
+Real 829.0489604473114 ARGoS 830 | CPU: 40.1 % | RAM: 87.7 %
+Real 839.0494430065155 ARGoS 840 | CPU: 24.4 % | RAM: 86.8 %
+Real 849.0500819683075 ARGoS 850 | CPU: 24.1 % | RAM: 87.0 %
+Real 859.0510814189911 ARGoS 860 | CPU: 57.6 % | RAM: 89.0 %
+Real 869.0512676239014 ARGoS 870 | CPU: 25.8 % | RAM: 88.1 %
+Real 879.0519292354584 ARGoS 880 | CPU: 43.5 % | RAM: 88.7 %
+Real 889.0524213314056 ARGoS 890 | CPU: 28.3 % | RAM: 89.6 %
+Real 899.0536062717438 ARGoS 900 | CPU: 34.4 % | RAM: 89.9 %
+Real 909.0537352561951 ARGoS 910 | CPU: 24.7 % | RAM: 90.1 %
+Real 919.0542171001434 ARGoS 920 | CPU: 23.6 % | RAM: 88.6 %
+Real 929.0548765659332 ARGoS 930 | CPU: 24.0 % | RAM: 88.6 %
+Real 939.0553841590881 ARGoS 940 | CPU: 23.0 % | RAM: 88.6 %
+Real 949.0560340881348 ARGoS 950 | CPU: 23.3 % | RAM: 87.9 %
+Real 959.0565385818481 ARGoS 960 | CPU: 23.3 % | RAM: 87.9 %
+Real 969.0571708679199 ARGoS 970 | CPU: 25.2 % | RAM: 88.3 %
+Real 979.0579433441162 ARGoS 980 | CPU: 34.6 % | RAM: 88.8 %
+Real 989.0584061145782 ARGoS 990 | CPU: 23.5 % | RAM: 89.4 %
+Real 999.0592820644379 ARGoS 1000 | CPU: 32.9 % | RAM: 89.4 %
+Real 1009.0595173835754 ARGoS 1010 | CPU: 25.4 % | RAM: 89.7 %
+Real 1019.0600872039795 ARGoS 1020 | CPU: 24.1 % | RAM: 89.4 %
+Real 1029.060698747635 ARGoS 1030 | CPU: 30.5 % | RAM: 90.9 %
+Real 1039.0613448619843 ARGoS 1040 | CPU: 23.1 % | RAM: 89.6 %
+Real 1049.0618464946747 ARGoS 1050 | CPU: 24.6 % | RAM: 89.7 %
+Real 1059.0625059604645 ARGoS 1060 | CPU: 25.6 % | RAM: 89.7 %
+Real 1069.06307554245 ARGoS 1070 | CPU: 22.3 % | RAM: 89.8 %
+Real 1079.063716173172 ARGoS 1080 | CPU: 32.5 % | RAM: 89.1 %
+Real 1089.0643193721771 ARGoS 1090 | CPU: 24.1 % | RAM: 89.2 %
+Real 1099.064826965332 ARGoS 1100 | CPU: 24.6 % | RAM: 89.4 %
+Real 1109.0655505657196 ARGoS 1110 | CPU: 26.4 % | RAM: 89.4 %
+Real 1119.0663328170776 ARGoS 1120 | CPU: 37.7 % | RAM: 89.3 %
+Real 1129.0666408538818 ARGoS 1130 | CPU: 25.9 % | RAM: 89.6 %
+Real 1139.0671689510345 ARGoS 1140 | CPU: 24.7 % | RAM: 89.6 %
+Real 1149.068018913269 ARGoS 1150 | CPU: 38.6 % | RAM: 89.2 %
+Real 1159.0683951377869 ARGoS 1160 | CPU: 23.9 % | RAM: 89.3 %
+Real 1169.0689141750336 ARGoS 1170 | CPU: 38.5 % | RAM: 89.5 %
+Real 1179.069703578949 ARGoS 1180 | CPU: 32.2 % | RAM: 90.4 %
+Real 1189.0701339244843 ARGoS 1190 | CPU: 24.1 % | RAM: 88.8 %
+Real 1199.0706877708435 ARGoS 1200 | CPU: 21.7 % | RAM: 88.9 %
+Real 1209.0713074207306 ARGoS 1210 | CPU: 24.0 % | RAM: 89.2 %
+Real 1219.0720045566559 ARGoS 1220 | CPU: 27.1 % | RAM: 89.8 %
+Real 1229.0726191997528 ARGoS 1230 | CPU: 28.4 % | RAM: 89.5 %
+Real 1239.073361158371 ARGoS 1240 | CPU: 34.5 % | RAM: 89.7 %
+Real 1249.0737326145172 ARGoS 1250 | CPU: 24.3 % | RAM: 89.8 %
+Real 1259.0742506980896 ARGoS 1260 | CPU: 28.7 % | RAM: 89.7 %
+Real 1269.0749762058258 ARGoS 1270 | CPU: 30.0 % | RAM: 90.0 %
+Real 1279.075931072235 ARGoS 1280 | CPU: 59.4 % | RAM: 91.7 %
+Real 1289.0763506889343 ARGoS 1290 | CPU: 58.6 % | RAM: 98.2 %
+Real 1306.4327766895294 ARGoS 1300 | CPU: 30.7 % | RAM: 72.8 %
+Real 1316.4330847263336 ARGoS 1310 | CPU: 30.6 % | RAM: 75.3 %
+Real 1326.4336609840393 ARGoS 1320 | CPU: 24.1 % | RAM: 76.0 %
+Real 1336.434280872345 ARGoS 1330 | CPU: 23.6 % | RAM: 75.4 %
+Real 

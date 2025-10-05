@@ -1,0 +1,83 @@
+allexport      	off
+braceexpand    	on
+emacs          	off
+errexit        	on
+errtrace       	off
+functrace      	off
+hashall        	on
+histexpand     	off
+history        	off
+ignoreeof      	off
+interactive-comments	on
+keyword        	off
+monitor        	off
+noclobber      	off
+noexec         	off
+noglob         	off
+nolog          	off
+notify         	off
+nounset        	on
+onecmd         	off
+physical       	off
+pipefail       	on
+posix          	off
+privileged     	off
+verbose        	off
+vi             	off
+xtrace         	on
+[array] host_ip=192.168.1.152  task_id=0  cfg=0  rep=1
+[array] waiting for geth JSON-RPC on :8545
+[array] JSON-RPC ready
+[array] starting ARGoS: /home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
+[geth] starting node0 p2p=30303 http=8545 natip=192.168.1.152
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_qtopengl.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_prototype.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_pointmass3d.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_entities.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_spiri.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_footbot.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d_magnetism.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_epuck.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_pipuck.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_eyebot.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_media.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_drone.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_genericrobot.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_builderbot.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_block.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d_gravity.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d_srocs.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3core_simulator.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics3d_floor.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/usr/local/lib/argos3/libargos3plugin_simulator_dynamics2d.so[0m[1;32m"[0m
+[1;32m[INFO] Using [0m[1;32m1[0m[1;32m parallel threads[0m
+[1;32m[INFO]   Chosen method "balance_quantity": threads will be assigned the same[0m
+[1;32m[INFO]   number of tasks, independently of the task length.[0m
+[1;32m[INFO] Using random seed = [0m[1;32m615424[0m
+[1;32m[INFO] Using simulation clock tick = [0m[1;32m1[0m
+[1;32m[INFO] Total experiment length in clock ticks = [0m[1;32m5000[0m
+[1;32m[INFO] Using the real-time clock.[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/home/cug/thesis/blockchain-simulations/argos-python/build/libpy_controller_interface.so[0m[1;32m"[0m
+[1;32m[INFO] Loaded library "[0m[1;32m/home/cug/thesis/blockchain-simulations/argos-python/build/libpy_loop_function_interface.so[0m[1;32m"[0m
+Controller strScript:/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py
+fb0
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+ERROR: Could not execute user script
+Loop function: strScript:/home/cug/thesis/blockchain-simulations/FloorEstimation/loop_functions/loop_function_convergence.py
+[1;32m[INFO] The physics engine "[0m[1;32mdyn2d[0m[1;32m" will perform [0m[1;32m10[0m[1;32m iterations per tick (dt = [0m[1;32m0.1[0m[1;32m sec)[0m
+[1;32m[INFO] No visualization selected.[0m

@@ -1,4 +1,4 @@
-
+set -x  
 # Change to this script's folder
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd "$parent_path"

@@ -1,0 +1,14 @@
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore logs & experiment outputs
+FloorEstimation/logs/
+*.log
+
+# Ignore backups or temp scripts
+*copy*.sh
+structure.txt
+
+# Ignore Geth sensitive data
+argos-blockchain/geth/files/keystores/

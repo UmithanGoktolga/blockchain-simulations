@@ -216,7 +216,7 @@ config "NOTES" "\"Experiment 1 in the Science Robotics paper (24 robots with an 
 config "REALTIME" "true"
 
 
-for NUMBYZANTINE in 0 3 6; do
+for NUMBYZANTINE in 0; do
     CFG=24rob-${NUMBYZANTINE}byz    
     config "NUMBYZANTINE" ${NUMBYZANTINE}
     wait

@@ -1,0 +1,368 @@
++ BASE_DIR=/home/cug/thesis/blockchain-simulations/FloorEstimation
+++ realpath /home/cug/thesis/blockchain-simulations/FloorEstimation
++ FLOOR=/home/cug/thesis/blockchain-simulations/FloorEstimation
++ HPC=/home/cug/thesis/blockchain-simulations/FloorEstimation/hpc
+++ realpath /home/cug/thesis/blockchain-simulations/FloorEstimation/..
++ ROOT=/home/cug/thesis/blockchain-simulations
++ LOG_DIR=/home/cug/thesis/blockchain-simulations/FloorEstimation/logs
++ mkdir -p /home/cug/thesis/blockchain-simulations/FloorEstimation/logs
++ export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
++ OMP_NUM_THREADS=1
++ MKL_NUM_THREADS=1
++ OPENBLAS_NUM_THREADS=1
++ NUMEXPR_NUM_THREADS=1
++ export SIF=/home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/geth.sif
++ SIF=/home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/geth.sif
++ export GENESIS_JSON=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
++ GENESIS_JSON=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
++ export HPC_NUM_NODES=24
++ HPC_NUM_NODES=24
++ export HPC_BASE_OFFSET=0
++ HPC_BASE_OFFSET=0
++ export NETWORK_ID=456719
++ NETWORK_ID=456719
++ export P2P_BASE=30303
++ P2P_BASE=30303
++ export HTTP_BASE=8545
++ HTTP_BASE=8545
++ export WS_BASE=8546
++ WS_BASE=8546
++ export HPC_MODE=1
++ HPC_MODE=1
++ export GETH_HOST=127.0.0.1
++ GETH_HOST=127.0.0.1
++ export GETH_HTTP_PORT=8545
++ GETH_HTTP_PORT=8545
++ export GETH_WS_PORT=8546
++ GETH_WS_PORT=8546
++ module load apptainer
++ true
++ '[' '!' -f /home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/geth.sif ']'
++ cd /home/cug/thesis/blockchain-simulations/FloorEstimation
++ export WORKDIR=/tmp/ethnet
++ WORKDIR=/tmp/ethnet
++ mkdir -p /tmp/ethnet /tmp/ethnet/nodes /tmp/ethnet/nodekeys /tmp/ethnet/neighbors
++ byz=(0 2 4 6)
++ CFG_IDX=0
++ REP=1
++ NUMBYZ=0
++ NUM1=24
+++ hostname -I
+++ awk '{print $1}'
++ HOST_IP=192.168.1.152
++ echo '[array] host_ip=192.168.1.152  task_id=0  cfg=0  rep=1'
++ pushd /home/cug/thesis/blockchain-simulations/FloorEstimation
++ python3 /home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/make_identifiers.py 24
++ echo '[array] Starting geth swarm...'
++ GETH_LAUNCH_PID=3311031
++ sleep 10
++ bash /home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/start-geth.sh
++ PEER_PID=3311251
++ echo '[array] waiting for geth JSON-RPC on :8545'
++ python3 /home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/peering_service.py
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
++ echo '[array] JSON-RPC ready'
++ break
++ '[' 1 -ge 300 ']'
++ source /home/cug/thesis/blockchain-simulations/FloorEstimation/experimentconfig.sh
+++ export HOMEFOLDER=/home/cug
+++ HOMEFOLDER=/home/cug
+++ export MAINFOLDER=/home/cug/thesis/blockchain-simulations
+++ MAINFOLDER=/home/cug/thesis/blockchain-simulations
+++ export DOCKERFOLDER=/home/cug/thesis/blockchain-simulations/argos-blockchain
+++ DOCKERFOLDER=/home/cug/thesis/blockchain-simulations/argos-blockchain
+++ export ARGOSFOLDER=/home/cug/thesis/blockchain-simulations/argos-python
+++ ARGOSFOLDER=/home/cug/thesis/blockchain-simulations/argos-python
+++ export EXPERIMENTFOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation
+++ EXPERIMENTFOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation
+++ export BLOCKCHAINPATH=/home/cug/eth_data_para/data
+++ BLOCKCHAINPATH=/home/cug/eth_data_para/data
+++ export ARGOSNAME=fast-floor
+++ ARGOSNAME=fast-floor
+++ export GENESISNAME=genesis_poa
+++ GENESISNAME=genesis_poa
+++ export CONTRACTNAME=MarketForaging
+++ CONTRACTNAME=MarketForaging
+++ export SCNAME=experiment_volker
+++ SCNAME=experiment_volker
+++ export GENESISFILE=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
+++ GENESISFILE=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
+++ export CONTRACTADDRESS=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/contractAddress.txt
+++ CONTRACTADDRESS=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/contractAddress.txt
+++ export CONTRACTABI=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.abi
+++ CONTRACTABI=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.abi
+++ export CONTRACTBIN=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.bin-runtime
+++ CONTRACTBIN=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.bin-runtime
+++ export SCFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.sol
+++ SCFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.sol
+++ export SCTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.x.sol
+++ SCTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.x.sol
+++ export ARGOSFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
+++ ARGOSFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
+++ export ARGOSTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
+++ ARGOSTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
+++ export SWARMNAME=ethereum
+++ SWARMNAME=ethereum
+++ export CONTAINERBASE=ethereum_eth
+++ CONTAINERBASE=ethereum_eth
+++ export REALTIME=true
+++ REALTIME=true
+++ export LENGTH=5000
+++ LENGTH=5000
+++ export FLOORFILE=38.png
+++ FLOORFILE=38.png
+++ export NUM1=12
+++ NUM1=12
+++ export NUMBYZANTINE=0
+++ NUMBYZANTINE=0
+++ export BYZANTINESWARMSTYLE=1
+++ BYZANTINESWARMSTYLE=1
+++ export CON1=/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py
+++ CON1=/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py
+++ export MYLOOP=loop_function_convergence.py
+++ MYLOOP=loop_function_convergence.py
+++ export RABRANGE=0.35
+++ RABRANGE=0.35
+++ export WHEELNOISE=0
+++ WHEELNOISE=0
+++ export TPS=1
+++ TPS=1
+++ export DENSITY=1
+++ DENSITY=1
++++ echo 12
++++ bc
+++ export NUMROBOTS=12
+++ NUMROBOTS=12
+++ export ARENADIM=1.9
+++ ARENADIM=1.9
+++ export ARENADIMH=0.95
+++ ARENADIMH=0.95
+++ export STARTDIM=0.6
+++ STARTDIM=0.6
+++ export BLOCKPERIOD=15
+++ BLOCKPERIOD=15
+++ export SEED=1500
+++ SEED=1500
+++ export TIMELIMIT=100
+++ TIMELIMIT=100
+++ export SLEEPTIME=5
+++ SLEEPTIME=5
+++ export REPS=1
+++ REPS=1
+++ export 'NOTES=Run with BYZ_COUNT=0, REP=1'
+++ NOTES='Run with BYZ_COUNT=0, REP=1'
++ export NUM1=12
++ NUM1=12
++ export NUMBYZANTINE=0
++ NUMBYZANTINE=0
++ export REPS=1
++ REPS=1
++ ARGOSFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
++ SLEEPTIME=5
++ echo '[array] starting ARGoS: /home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos'
++ sleep 5
++ argos3 -z -c /home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+AttributeError: module '__main__' has no attribute 'destroy'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+AttributeError: module '__main__' has no attribute 'destroy'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+Traceback (most recent call last):
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py", line 25, in <module>
+    from console import *
+  File "/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/console.py", line 5, in <module>
+    from web3 import Web3, HTTPProvider
+  File "/home/cug/.local/lib/python3.8/site-packages/web3/__init__.py", line 6, in <module>
+    from eth_account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/__init__.py", line 1, in <module>
+    from eth_account.account import (
+  File "/home/cug/.local/lib/python3.8/site-packages/eth_account/account.py", line 8, in <module>
+    from cytoolz import (
+  File "/home/cug/.local/lib/python3.8/site-packages/cytoolz/__init__.py", line 1, in <module>
+    from .itertoolz import *
+ImportError: Interpreter change detected - this module can only be loaded into one interpreter per process.
+AttributeError: module '__main__' has no attribute 'init'
+[0m+ RESULTS_DIR=/home/cug/thesis/blockchain-simulations/FloorEstimation/results/experiment_default/24rob-0byz/1
++ mkdir -p /home/cug/thesis/blockchain-simulations/FloorEstimation/results/experiment_default/24rob-0byz/1
++ '[' -d /tmp/ethnet ']'
++ cp -r /tmp/ethnet/logs /tmp/ethnet/neighbors /tmp/ethnet/node0.log /tmp/ethnet/nodekeys /tmp/ethnet/nodes /home/cug/thesis/blockchain-simulations/FloorEstimation/results/experiment_default/24rob-0byz/1/
++ '[' -d /home/cug/thesis/blockchain-simulations/FloorEstimation/logs ']'
++ cp -r /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/0 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/1 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/10 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/11 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/12 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/2 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/3 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/4 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/5 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/6 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/7 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/8 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/9 /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/communication_size /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/config.py /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/control_params.py /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/experimentconfig.sh /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-120_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-120_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-121_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-121_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-122_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-122_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-123_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-123_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-124_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-124_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-125_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-125_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-126_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-126_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-127_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-127_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-128_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-128_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-129_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-129_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-130_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-130_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-131_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-131_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-132_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-132_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-133_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-133_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-134_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-134_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-135_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-135_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-136_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-136_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-137_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-137_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-138_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-138_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-139_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-139_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-140_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-140_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-141_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-141_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-142_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-142_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-148_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/geth-net-148_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/loop_params.py /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-101_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-101_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-103_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-103_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-105_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-105_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-107_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-107_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-110_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-110_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-112_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-112_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-114_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-114_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-116_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-116_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-118_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-118_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_10.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_10.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_11.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_11.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_12.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_12.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_13.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_13.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_14.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_14.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_15.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_15.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_16.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_16.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_17.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_17.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_18.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_18.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_19.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_19.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_1.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_1.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_20.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_20.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_21.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_21.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_22.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_22.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_23.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_23.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_24.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_24.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_25.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_25.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_26.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_26.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_27.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_27.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_28.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_28.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_29.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_29.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_2.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_2.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_3.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_3.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_4.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_4.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_5.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_5.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_6.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_6.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_7.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_7.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_8.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_8.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_9.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-2_9.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_10.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_10.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_11.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_11.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_12.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_12.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_13.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_13.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_14.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_14.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_15.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_15.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_16.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_16.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_17.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_17.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_18.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_18.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_19.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_19.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_1.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_1.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_20.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_20.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_21.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_21.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_22.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_22.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_23.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_23.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_24.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_24.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_25.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_25.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_26.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_26.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_27.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_27.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_28.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_28.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_29.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_29.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_2.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_2.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_3.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_3.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_4.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_4.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_5.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_5.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_6.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_6.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_7.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_7.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_8.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_8.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_9.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-32_9.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-62_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-62_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-65_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-65_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-67_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-67_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-69_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-69_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-71_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-71_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-73_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-73_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-75_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-75_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-77_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-77_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-79_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-79_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-81_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-81_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-83_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-83_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-85_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-85_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-87_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-87_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-89_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-89_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-91_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-91_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-93_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-93_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-95_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-95_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-97_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-97_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-99_0.err /home/cug/thesis/blockchain-simulations/FloorEstimation/logs/slurm-99_0.out /home/cug/thesis/blockchain-simulations/FloorEstimation/results/experiment_default/24rob-0byz/1/

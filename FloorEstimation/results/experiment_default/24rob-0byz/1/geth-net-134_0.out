@@ -1,0 +1,30 @@
+allexport      	off
+braceexpand    	on
+emacs          	off
+errexit        	on
+errtrace       	off
+functrace      	off
+hashall        	on
+histexpand     	off
+history        	off
+ignoreeof      	off
+interactive-comments	on
+keyword        	off
+monitor        	off
+noclobber      	off
+noexec         	off
+noglob         	off
+nolog          	off
+notify         	off
+nounset        	on
+onecmd         	off
+physical       	off
+pipefail       	on
+posix          	off
+privileged     	off
+verbose        	off
+vi             	off
+xtrace         	on
+[array] host_ip=192.168.1.152  task_id=0  cfg=0  rep=1
+[array] waiting for geth JSON-RPC on :8545
+[geth] starting node0 p2p=30303 http=8545 natip=192.168.1.152

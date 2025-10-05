@@ -1,0 +1,2025 @@
++ RUN_FOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation/results/data/BYZ_0_REP_1_20250810_040421
++ echo RUN_FOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation/results/data/BYZ_0_REP_1_20250810_040421
++ mkdir -p /home/cug/thesis/blockchain-simulations/FloorEstimation/results/data/BYZ_0_REP_1_20250810_040421
++ config NUMBYZANTINE 0
++ sed -i 's|^export NUMBYZANTINE=.*|export NUMBYZANTINE=0|' experimentconfig.sh
++ config REPS 1
++ sed -i 's|^export REPS=.*|export REPS=1|' experimentconfig.sh
++ config NOTES '"Run with BYZ_COUNT=0, REP=1"'
++ sed -i 's|^export NOTES=.*|export NOTES="Run with BYZ_COUNT=0, REP=1"|' experimentconfig.sh
+++ seq 1 1
++ for REP in $(seq 1 ${REPS})
++ echo 'Running experiment repetition 1'
++ . starter -r -s
+++ source experimentconfig.sh
++++ export HOMEFOLDER=/home/cug
++++ HOMEFOLDER=/home/cug
++++ export MAINFOLDER=/home/cug/thesis/blockchain-simulations
++++ MAINFOLDER=/home/cug/thesis/blockchain-simulations
++++ export DOCKERFOLDER=/home/cug/thesis/blockchain-simulations/argos-blockchain
++++ DOCKERFOLDER=/home/cug/thesis/blockchain-simulations/argos-blockchain
++++ export ARGOSFOLDER=/home/cug/thesis/blockchain-simulations/argos-python
++++ ARGOSFOLDER=/home/cug/thesis/blockchain-simulations/argos-python
++++ export EXPERIMENTFOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation
++++ EXPERIMENTFOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation
++++ export BLOCKCHAINPATH=/home/cug/eth_data_para/data
++++ BLOCKCHAINPATH=/home/cug/eth_data_para/data
++++ export ARGOSNAME=fast-floor
++++ ARGOSNAME=fast-floor
++++ export GENESISNAME=genesis_poa
++++ GENESISNAME=genesis_poa
++++ export CONTRACTNAME=MarketForaging
++++ CONTRACTNAME=MarketForaging
++++ export SCNAME=experiment_volker
++++ SCNAME=experiment_volker
++++ export GENESISFILE=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
++++ GENESISFILE=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
++++ export CONTRACTADDRESS=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/contractAddress.txt
++++ CONTRACTADDRESS=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/contractAddress.txt
++++ export CONTRACTABI=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.abi
++++ CONTRACTABI=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.abi
++++ export CONTRACTBIN=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.bin-runtime
++++ CONTRACTBIN=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.bin-runtime
++++ export SCFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.sol
++++ SCFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.sol
++++ export SCTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.x.sol
++++ SCTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.x.sol
++++ export ARGOSFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
++++ ARGOSFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
++++ export ARGOSTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
++++ ARGOSTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
++++ export SWARMNAME=ethereum
++++ SWARMNAME=ethereum
++++ export CONTAINERBASE=ethereum_eth
++++ CONTAINERBASE=ethereum_eth
++++ export REALTIME=true
++++ REALTIME=true
++++ export LENGTH=5000
++++ LENGTH=5000
++++ export FLOORFILE=38.png
++++ FLOORFILE=38.png
++++ export NUM1=12
++++ NUM1=12
++++ export NUMBYZANTINE=0
++++ NUMBYZANTINE=0
++++ export BYZANTINESWARMSTYLE=1
++++ BYZANTINESWARMSTYLE=1
++++ export CON1=/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py
++++ CON1=/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py
++++ export MYLOOP=loop_function_convergence.py
++++ MYLOOP=loop_function_convergence.py
++++ export RABRANGE=0.35
++++ RABRANGE=0.35
++++ export WHEELNOISE=0
++++ WHEELNOISE=0
++++ export TPS=1
++++ TPS=1
++++ export DENSITY=1
++++ DENSITY=1
+++++ echo 12
+++++ bc
++++ export NUMROBOTS=12
++++ NUMROBOTS=12
++++ export ARENADIM=1.9
++++ ARENADIM=1.9
++++ export ARENADIMH=0.95
++++ ARENADIMH=0.95
++++ export STARTDIM=0.6
++++ STARTDIM=0.6
++++ export BLOCKPERIOD=15
++++ BLOCKPERIOD=15
++++ export SEED=1500
++++ SEED=1500
++++ export TIMELIMIT=100
++++ TIMELIMIT=100
++++ export SLEEPTIME=5
++++ SLEEPTIME=5
++++ export REPS=1
++++ REPS=1
++++ export 'NOTES=Run with BYZ_COUNT=0, REP=1'
++++ NOTES='Run with BYZ_COUNT=0, REP=1'
+++ echo +-----------------------------------------------------------+
+++ echo 'MAINFOLDER IS /home/cug/thesis/blockchain-simulations'
+++ echo +-----------------------------------------------------------+
+++ echo 'Updating the ARGoS XML file'
+++ echo /home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
+++ echo /home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
+++ sed -e 's|REALTIME|true|g' -e 's|NUMROBOTS|12|g' -e 's|WHEELNOISE|0|g' -e 's|CON1|/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py|g' -e 's|MYLOOP|loop_function_convergence.py|g' -e 's|LENGTH|5000|g' -e 's|NUM1|12|g' -e 's|NUM2||g' -e 's|STARTDIM|0.6|g' -e 's|TPS|1|g' -e 's|RABRANGE|0.35|g' -e 's|NUMBYZANTINE|0|g' -e 's|EXPERIMENTFOLDER|/home/cug/thesis/blockchain-simulations/FloorEstimation|g' -e 's|FLOORFILE|38.png|g' -e 's|ARGOSFOLDER|/home/cug/thesis/blockchain-simulations/argos-python|g' -e 's|ARENADIMH|0.95|g' -e 's|ARENADIM|1.9|g' /home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
+++ echo DONE
+++ for opt in "$@"
+++ [[ -r == \-\-\r\e\s\e\t ]]
+++ [[ -r == \-\r ]]
+++ echo +-----------------------------------------------------------+
+++ echo 'Resetting Geth...'
+++ ./reset-geth
+Warning: Support for EVM versions older than constantinople is deprecated and will be removed in the future.
+ethereum_eth: Error response from daemon: service ethereum_eth not found
+++ for opt in "$@"
+++ [[ -s == \-\-\r\e\s\e\t ]]
+++ [[ -s == \-\r ]]
+++ echo +-----------------------------------------------------------+
+++ echo 'Waiting web3 to respond...'
+++ ready=0
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+++ [[ 0 != 12 ]]
+++ . test-tcp 4000 9898 9899
++++ ready=0
+++++ awk '{print $4}' identifiers.txt
++++ echo 'Total responded: 0'
+++ sleep 0.5
+slurmstepd-localhost: error: *** JOB 72 ON localhost CANCELLED AT 2025-08-10T04:07:01 ***

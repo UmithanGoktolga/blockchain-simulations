@@ -1,0 +1,18 @@
++ export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
++ OMP_NUM_THREADS=1
++ MKL_NUM_THREADS=1
++ OPENBLAS_NUM_THREADS=1
++ NUMEXPR_NUM_THREADS=1
++++ dirname /var/spool/slurmd/job00127/slurm_script
+++ cd /var/spool/slurmd/job00127
+++ pwd
++ SCRIPT_DIR=/var/spool/slurmd/job00127
++ HPC=/var/spool/slurmd/job00127
+++ realpath /var/spool/slurmd/job00127/..
++ FLOOR=/var/spool/slurmd
+++ realpath /var/spool/slurmd/job00127/../..
++ ROOT=/var/spool
+++ realpath /var/spool/slurmd/job00127/../logs
++ LOG_DIR=/var/spool/slurmd/logs
++ mkdir -p /var/spool/slurmd/logs
+mkdir: cannot create directory ‘/var/spool/slurmd/logs’: Permission denied

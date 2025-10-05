@@ -28,16 +28,15 @@ export CONTAINERBASE=${SWARMNAME}_eth
 # [ARGOS]
 
 export REALTIME=true
-export LENGTH=5000
+export LENGTH=5000  # 500 seconds (about 8.3 minutes) at 10 ticks/sec - reasonable test duration
 export FLOORFILE=38.png
-export NUM1=24
-export NUMBYZANTINE=6
+export NUM1=5 # Testing with 5 robots first
+export NUMBYZANTINE=0
 export BYZANTINESWARMSTYLE=1
 export CON1="${EXPERIMENTFOLDER}/controllers/main.py"
 export MYLOOP="loop_function_convergence.py"
 
-
-export RABRANGE=0.33
+export RABRANGE=0.35
 export WHEELNOISE="0"
 export TPS=1
 export DENSITY="1"
@@ -48,13 +47,14 @@ export ARENADIMH=0.95
 export STARTDIM=0.6
 
 # [GETH]
-export BLOCKPERIOD=15
+export BLOCKPERIOD=15  # Clique period - blocks sealed every 15 seconds
+export HPC_NUM_NODES=5
 
 # [SC]
 
 # [OTHER]
 export SEED=1500
-export TIMELIMIT=100
+export TIMELIMIT=600  # 10 minutes - enough time for simulation to complete
 export SLEEPTIME=5
 export REPS=1
-export NOTES="Experiment 1 in the Science Robotics paper (24 robots with an increasing number of Byzantines)"
+export NOTES="Run with BYZ_COUNT=0, REP=1, reduced time for testing"

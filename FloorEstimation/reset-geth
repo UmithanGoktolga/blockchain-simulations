@@ -1,4 +1,5 @@
 #!/bin/bash
+export SUDO_ASKPASS=/home/cug/thesis/askpass.sh
 
 source experimentconfig.sh
 
@@ -56,10 +57,7 @@ sed -ie "0,/\"0x1236efcbcbb340000\"/s//\"0x2000000000000000000000000000000000000
 echo "+-----------------------------------------------------------+"
 echo "Restarting the docker containers"
 
-## Restart docker
-echo "Scaling down ethereum_eth service..."
-docker service scale ${CONTAINERBASE}=0
-sleep 5  # Wait for the service to scale down
+
 
 echo "Stopping all containers..."
 docker ps -q | xargs -r docker stop
@@ -73,9 +71,25 @@ echo "Removing network ethereum_default..."
 docker network rm ethereum_default || echo "Network not found."
 sleep 5
 
-echo "Restarting Docker service..."
-sudo systemctl restart docker.service
+
+
+echo "Ensuring network ethereum_default exists..."
+if ! docker network inspect ethereum_default >/dev/null 2>&1; then
+    docker network create --driver overlay --subnet=192.168.1.0/24 ethereum_default || { echo "Failed to create network ethereum_default. Exiting."; exit 1; }
+else
+    echo "Network ethereum_default already exists."
+fi
 sleep 5
+
+
+echo "Restarting Docker service..."
+sudo -A systemctl restart docker.service
+sleep 12
+
+## Restart docker
+echo "Scaling down ethereum_eth service..."
+docker service scale ${CONTAINERBASE}=0
+sleep 5 
 
 echo "Starting new docker process..."
 bash ${DOCKERFOLDER}/local_scripts/start_network.sh $NUMROBOTS

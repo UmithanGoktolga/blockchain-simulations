@@ -1,0 +1,103 @@
++ RUN_FOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation/results/data/BYZ_0_REP_1_20250810_223134
++ echo RUN_FOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation/results/data/BYZ_0_REP_1_20250810_223134
++ mkdir -p /home/cug/thesis/blockchain-simulations/FloorEstimation/results/data/BYZ_0_REP_1_20250810_223134
++ config NUMBYZANTINE 0
++ sed -i 's|^export NUMBYZANTINE=.*|export NUMBYZANTINE=0|' experimentconfig.sh
++ config REPS 1
++ sed -i 's|^export REPS=.*|export REPS=1|' experimentconfig.sh
++ config NOTES '"Run with BYZ_COUNT=0, REP=1"'
++ sed -i 's|^export NOTES=.*|export NOTES="Run with BYZ_COUNT=0, REP=1"|' experimentconfig.sh
+++ seq 1 1
++ for REP in $(seq 1 ${REPS})
++ echo 'Running experiment repetition 1'
++ . starter -r -s
+++ source experimentconfig.sh
++++ export HOMEFOLDER=/home/cug
++++ HOMEFOLDER=/home/cug
++++ export MAINFOLDER=/home/cug/thesis/blockchain-simulations
++++ MAINFOLDER=/home/cug/thesis/blockchain-simulations
++++ export DOCKERFOLDER=/home/cug/thesis/blockchain-simulations/argos-blockchain
++++ DOCKERFOLDER=/home/cug/thesis/blockchain-simulations/argos-blockchain
++++ export ARGOSFOLDER=/home/cug/thesis/blockchain-simulations/argos-python
++++ ARGOSFOLDER=/home/cug/thesis/blockchain-simulations/argos-python
++++ export EXPERIMENTFOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation
++++ EXPERIMENTFOLDER=/home/cug/thesis/blockchain-simulations/FloorEstimation
++++ export BLOCKCHAINPATH=/home/cug/eth_data_para/data
++++ BLOCKCHAINPATH=/home/cug/eth_data_para/data
++++ export ARGOSNAME=fast-floor
++++ ARGOSNAME=fast-floor
++++ export GENESISNAME=genesis_poa
++++ GENESISNAME=genesis_poa
++++ export CONTRACTNAME=MarketForaging
++++ CONTRACTNAME=MarketForaging
++++ export SCNAME=experiment_volker
++++ SCNAME=experiment_volker
++++ export GENESISFILE=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
++++ GENESISFILE=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
++++ export CONTRACTADDRESS=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/contractAddress.txt
++++ CONTRACTADDRESS=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/contractAddress.txt
++++ export CONTRACTABI=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.abi
++++ CONTRACTABI=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.abi
++++ export CONTRACTBIN=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.bin-runtime
++++ CONTRACTBIN=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/build/MarketForaging.bin-runtime
++++ export SCFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.sol
++++ SCFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.sol
++++ export SCTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.x.sol
++++ SCTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/scs/experiment_volker.x.sol
++++ export ARGOSFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
++++ ARGOSFILE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.argos
++++ export ARGOSTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
++++ ARGOSTEMPLATE=/home/cug/thesis/blockchain-simulations/FloorEstimation/experiments/fast-floor.x.argos
++++ export SWARMNAME=ethereum
++++ SWARMNAME=ethereum
++++ export CONTAINERBASE=ethereum_eth
++++ CONTAINERBASE=ethereum_eth
++++ export REALTIME=true
++++ REALTIME=true
++++ export LENGTH=5000
++++ LENGTH=5000
++++ export FLOORFILE=38.png
++++ FLOORFILE=38.png
++++ export NUM1=12
++++ NUM1=12
++++ export NUMBYZANTINE=0
++++ NUMBYZANTINE=0
++++ export BYZANTINESWARMSTYLE=1
++++ BYZANTINESWARMSTYLE=1
++++ export CON1=/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py
++++ CON1=/home/cug/thesis/blockchain-simulations/FloorEstimation/controllers/main.py
++++ export MYLOOP=loop_function_convergence.py
++++ MYLOOP=loop_function_convergence.py
++++ export RABRANGE=0.35
++++ RABRANGE=0.35
++++ export WHEELNOISE=0
++++ WHEELNOISE=0
++++ export TPS=1
++++ TPS=1
++++ export DENSITY=1
++++ DENSITY=1
+++++ echo 12
+++++ bc
++++ export NUMROBOTS=12
++++ NUMROBOTS=12
++++ export ARENADIM=1.9
++++ ARENADIM=1.9
++++ export ARENADIMH=0.95
++++ ARENADIMH=0.95
++++ export STARTDIM=0.6
++++ STARTDIM=0.6
++++ export BLOCKPERIOD=15
++++ BLOCKPERIOD=15
++++ export SEED=1500
++++ SEED=1500
++++ export TIMELIMIT=100
++++ TIMELIMIT=100
++++ export SLEEPTIME=5
++++ SLEEPTIME=5
++++ export REPS=1
++++ REPS=1
++++ export 'NOTES=Run with BYZ_COUNT=0, REP=1'
++++ NOTES='Run with BYZ_COUNT=0, REP=1'
+++ sudo -A systemctl restart docker
+++ docker swarm leave --force
+slurmstepd-localhost: error: *** JOB 104 ON localhost CANCELLED AT 2025-08-10T22:31:36 ***

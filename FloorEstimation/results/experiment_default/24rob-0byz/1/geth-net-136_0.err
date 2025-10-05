@@ -1,0 +1,641 @@
++ BASE_DIR=/home/cug/thesis/blockchain-simulations/FloorEstimation
+++ realpath /home/cug/thesis/blockchain-simulations/FloorEstimation
++ FLOOR=/home/cug/thesis/blockchain-simulations/FloorEstimation
++ HPC=/home/cug/thesis/blockchain-simulations/FloorEstimation/hpc
+++ realpath /home/cug/thesis/blockchain-simulations/FloorEstimation/..
++ ROOT=/home/cug/thesis/blockchain-simulations
++ LOG_DIR=/home/cug/thesis/blockchain-simulations/FloorEstimation/logs
++ mkdir -p /home/cug/thesis/blockchain-simulations/FloorEstimation/logs
++ export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
++ OMP_NUM_THREADS=1
++ MKL_NUM_THREADS=1
++ OPENBLAS_NUM_THREADS=1
++ NUMEXPR_NUM_THREADS=1
++ export SIF=/home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/geth.sif
++ SIF=/home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/geth.sif
++ export GENESIS_JSON=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
++ GENESIS_JSON=/home/cug/thesis/blockchain-simulations/argos-blockchain/geth/files/genesis_poa.json
++ export HPC_NUM_NODES=24
++ HPC_NUM_NODES=24
++ export HPC_BASE_OFFSET=0
++ HPC_BASE_OFFSET=0
++ export NETWORK_ID=456719
++ NETWORK_ID=456719
++ export P2P_BASE=30303
++ P2P_BASE=30303
++ export HTTP_BASE=8545
++ HTTP_BASE=8545
++ export WS_BASE=8546
++ WS_BASE=8546
++ export HPC_MODE=1
++ HPC_MODE=1
++ export GETH_HOST=127.0.0.1
++ GETH_HOST=127.0.0.1
++ export GETH_HTTP_PORT=8545
++ GETH_HTTP_PORT=8545
++ export GETH_WS_PORT=8546
++ GETH_WS_PORT=8546
++ module load apptainer
++ true
++ '[' '!' -f /home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/geth.sif ']'
++ cd /home/cug/thesis/blockchain-simulations/FloorEstimation
++ export WORKDIR=/tmp/ethnet
++ WORKDIR=/tmp/ethnet
++ mkdir -p /tmp/ethnet /tmp/ethnet/nodes /tmp/ethnet/nodekeys /tmp/ethnet/neighbors
++ byz=(0 2 4 6)
++ CFG_IDX=0
++ REP=1
++ NUMBYZ=0
++ NUM1=24
+++ hostname -I
+++ awk '{print $1}'
++ HOST_IP=192.168.1.152
++ echo '[array] host_ip=192.168.1.152  task_id=0  cfg=0  rep=1'
++ pushd /home/cug/thesis/blockchain-simulations/FloorEstimation
++ python3 /home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/make_identifiers.py 24
++ GETH_LAUNCH_PID=3263109
++ bash /home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/start-geth.sh
++ PEER_PID=3263110
++ echo '[array] waiting for geth JSON-RPC on :8545'
++ python3 /home/cug/thesis/blockchain-simulations/FloorEstimation/hpc/peering_service.py
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
++ for i in {1..300}
++ curl -fsS -H 'Content-Type: application/json' -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545
+curl: (7) Failed to connect to 127.0.0.1 port 8545: Connection refused
++ sleep 1
+slurmstepd-localhost: error: *** JOB 136 ON localhost CANCELLED AT 2025-08-14T23:05:05 ***

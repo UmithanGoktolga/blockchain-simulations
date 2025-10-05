@@ -1,13 +1,14 @@
 #!/bin/bash
 # Build Apptainer SIF from geth.def
-set -e
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DEF="$SCRIPT_DIR/geth.def"
+OUT="$SCRIPT_DIR/geth.sif"
+module load apptainer 2>/dev/null || true
+apptainer build "$OUT" "$DEF"
+echo "Built $OUT"
 
-# Get the directory where this script is located
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SIF_PATH="${SCRIPT_DIR}/geth.sif"
-DEF_PATH="${SCRIPT_DIR}/geth.def"
 
-echo "Building Apptainer SIF: ${SIF_PATH}"
 
 # Try to load apptainer module (common on HPC systems)
 if command -v module &> /dev/null; then
@@ -21,9 +22,9 @@ if ! command -v apptainer &> /dev/null; then
 fi
 
 # Build the SIF file
-if apptainer build "${SIF_PATH}" "${DEF_PATH}"; then
-    echo "Build successful: ${SIF_PATH}"
-    echo "${SIF_PATH}"
+if apptainer build "${OUT}" "${OUT}"; then
+    echo "Build successful: ${OUT}"
+    echo "${OUT}"
     exit 0
 else
     echo "Build failed"
