@@ -67,6 +67,10 @@ echo "[array] host_ip=$HOST_IP  task_id=$SLURM_ARRAY_TASK_ID  cfg=$NUMBYZ  rep=$
 pushd "$FLOOR" >/dev/null
 python3 "$HPC/make_identifiers.py" "$HPC_NUM_NODES" > identifiers.txt
 
+# Generate genesis file dynamically based on HPC_NUM_NODES
+echo "[array] Generating genesis for $HPC_NUM_NODES nodes..."
+bash "$HPC/generate-genesis.sh" "$HPC_NUM_NODES" "${BLOCKPERIOD:-15}"
+
 # Start geth swarm (5 nodes by default) and peering service
 echo "[array] Starting geth swarm..."
 bash "$HPC/start-geth.sh"

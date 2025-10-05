@@ -88,21 +88,62 @@ wait_for_http() {
   return 0
 }
 
+get_account_address() {
+  local node_id="$1"
+  # Map node to keystore ID, then get address from keystore file
+  local keystore_id
+  case $node_id in
+    0) keystore_id=5 ;;
+    1) keystore_id=3 ;;
+    2) keystore_id=1 ;;
+    3) keystore_id=8 ;;
+    4) keystore_id=12 ;;
+    5) keystore_id=6 ;;
+    6) keystore_id=7 ;;
+    7) keystore_id=4 ;;
+    8) keystore_id=9 ;;
+    9) keystore_id=10 ;;
+    10) keystore_id=11 ;;
+    11) keystore_id=2 ;;
+    *) keystore_id=$node_id ;;
+  esac
+  
+  # Read address from keystore file
+  local keystore_file="$MAINFOLDER/argos-blockchain/geth/files/keystores/$keystore_id/$keystore_id"
+  if [[ -f "$keystore_file" ]]; then
+    grep -o '"address":"[^"]*"' "$keystore_file" | cut -d'"' -f4 | sed 's/^/0x/'
+  else
+    echo "0x0000000000000000000000000000000000000000"
+  fi
+}
+
+
 mk_datadir() {
   local node_id="$1"
   mkdir -p "$WORKDIR/nodes/$node_id/keystore"
   
-  # Copy pre-generated keystore for this node
-  # For node 0 (miner), use keystore 5 which corresponds to the first authorized signer
-  # For other nodes, use their node ID as keystore ID
-  local keystore_id=$node_id
-  if [ "$node_id" -eq 0 ]; then
-    keystore_id=5
-  fi
+  # Map each node to its corresponding authorized signer keystore
+  # This ordering matches the genesis generation script
+  local keystore_id
+  case $node_id in
+    0) keystore_id=5 ;;
+    1) keystore_id=3 ;;
+    2) keystore_id=1 ;;
+    3) keystore_id=8 ;;
+    4) keystore_id=12 ;;
+    5) keystore_id=6 ;;
+    6) keystore_id=7 ;;
+    7) keystore_id=4 ;;
+    8) keystore_id=9 ;;
+    9) keystore_id=10 ;;
+    10) keystore_id=11 ;;
+    11) keystore_id=2 ;;
+    *) keystore_id=$node_id ;;  # Fallback for additional nodes
+  esac
   
   local keystore_src="$MAINFOLDER/argos-blockchain/geth/files/keystores/$keystore_id"
   if [[ -d "$keystore_src" ]]; then
-    echo "[DEBUG] Copying keystore $keystore_id from $keystore_src to $WORKDIR/nodes/$node_id/keystore/"
+    echo "[DEBUG] Node $node_id: Copying keystore $keystore_id from $keystore_src"
     cp -r "$keystore_src/"* "$WORKDIR/nodes/$node_id/keystore/" 2>/dev/null || true
   else
     echo "[WARN] No pre-generated keystore found at $keystore_src"
@@ -141,10 +182,11 @@ BOOT_P2P="$P2P_BASE"
 BOOT_HTTP="$HTTP_BASE"
 BOOT_DIR="$WORKDIR/nodes/0"
 BOOT_IPC="$BOOT_DIR/geth.ipc"
+NODE0_ACCOUNT=$(get_account_address 0)
 
 init_genesis_if_needed 0
 
-echo "[geth] starting node0 p2p=$BOOT_P2P http=$BOOT_HTTP natip=$HOST_IP"
+echo "[geth] starting node0 p2p=$BOOT_P2P http=$BOOT_HTTP natip=$HOST_IP account=$NODE0_ACCOUNT"
 if [[ -n "${SIF:-}" && -f "${SIF}" ]]; then
   echo "[DEBUG] About to start node0 with apptainer..."
   apptainer exec "$SIF" geth \
@@ -156,10 +198,10 @@ if [[ -n "${SIF:-}" && -f "${SIF}" ]]; then
     --http.addr "0.0.0.0" \
     --http.port "$BOOT_HTTP" \
     --http.api "eth,net,web3,txpool,admin,miner,clique" \
-    --miner.etherbase 0x036d6b4da0b4eeb9d312e958c2937d9016765f50 \
+    --miner.etherbase "$NODE0_ACCOUNT" \
     --mine \
     --allow-insecure-unlock \
-    --unlock "0x036d6b4da0b4eeb9d312e958c2937d9016765f50" \
+    --unlock "$NODE0_ACCOUNT" \
     --password <(echo "") \
     --authrpc.port 8551 \
     --syncmode full \
@@ -181,10 +223,10 @@ else
     --http.addr "0.0.0.0" \
     --http.port "$BOOT_HTTP" \
     --http.api "eth,net,web3,txpool,admin,miner,clique" \
-    --miner.etherbase 0x036d6b4da0b4eeb9d312e958c2937d9016765f50 \
+    --miner.etherbase "$NODE0_ACCOUNT" \
     --mine \
     --allow-insecure-unlock \
-    --unlock "0x036d6b4da0b4eeb9d312e958c2937d9016765f50" \
+    --unlock "$NODE0_ACCOUNT" \
     --password <(echo "") \
     --authrpc.port 8551 \
     --syncmode full \
@@ -290,8 +332,9 @@ for i in $(seq 1 $((NUM_NODES-1))); do
   if [[ "$FOLLOWER_HTTP" == "1" ]]; then
     HTTP=$((HTTP_BASE + i))
     AUTHRPC_PORT=$((8551 + i))
-    echo "[DEBUG] Node $i: FOLLOWER_HTTP=1, HTTP_PORT=$HTTP, AUTHRPC_PORT=$AUTHRPC_PORT"
-    echo "[geth] starting node $i p2p=$P2P http=$HTTP authrpc=$AUTHRPC_PORT"
+    NODE_ACCOUNT=$(get_account_address "$i")
+    echo "[DEBUG] Node $i: FOLLOWER_HTTP=1, HTTP_PORT=$HTTP, AUTHRPC_PORT=$AUTHRPC_PORT, ACCOUNT=$NODE_ACCOUNT"
+    echo "[geth] starting node $i p2p=$P2P http=$HTTP authrpc=$AUTHRPC_PORT (MINING ENABLED)"
     
     if [[ -n "${SIF:-}" && -f "${SIF}" ]]; then
       echo "[DEBUG] Node $i: Using apptainer with SIF=$SIF"
@@ -304,7 +347,12 @@ for i in $(seq 1 $((NUM_NODES-1))); do
         --http \
         --http.addr "0.0.0.0" \
         --http.port "$HTTP" \
-        --http.api "eth,net,web3,txpool" \
+        --http.api "eth,net,web3,txpool,admin,miner,clique" \
+        --miner.etherbase "$NODE_ACCOUNT" \
+        --mine \
+        --allow-insecure-unlock \
+        --unlock "$NODE_ACCOUNT" \
+        --password <(echo "") \
         --authrpc.port "$AUTHRPC_PORT" \
         --syncmode full \
         --verbosity 2 \
@@ -324,7 +372,12 @@ for i in $(seq 1 $((NUM_NODES-1))); do
         --http \
         --http.addr "0.0.0.0" \
         --http.port "$HTTP" \
-        --http.api "eth,net,web3,txpool" \
+        --http.api "eth,net,web3,txpool,admin,miner,clique" \
+        --miner.etherbase "$NODE_ACCOUNT" \
+        --mine \
+        --allow-insecure-unlock \
+        --unlock "$NODE_ACCOUNT" \
+        --password <(echo "") \
         --authrpc.port "$AUTHRPC_PORT" \
         --syncmode full \
         --verbosity 2 \
